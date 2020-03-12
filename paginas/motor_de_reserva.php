@@ -58,12 +58,10 @@ function be_opt(){
     .logo-plugin img {
         width: 200px;
     }
-
     .titulo-plugin {
         display: inline-block;
         vertical-align:text-bottom;
     }
-
     .background-plugin h2 {
         color:#2d0053;
         font-size: 25px;
@@ -85,14 +83,12 @@ function be_opt(){
         font-style: italic;
         margin: 0 0 2em 0;
     }
-
     .background-plugin h2,h5{
         margin: 5px 0;
     }
     .documentacao-plugin {
         float: right;        
     }
-
     .numero-plugin {
         background: #2d0053;
         border-radius: 5px;
@@ -106,7 +102,6 @@ function be_opt(){
         font-size: 16px;
         margin: 50px 0;
     }
-
     span.observacao {
         background: #eee;
         margin: 10px 0;
@@ -141,11 +136,7 @@ function be_opt(){
 
 
 <div class="background-plugin">
-
-
     <div class="header-plugin">
-
-
         <div class="titulo-plugin">
             <h2>
                 Motor de Reserva Omnibees para Wordpress
@@ -160,7 +151,6 @@ function be_opt(){
     <div class="content-plugin">
         <form method="post" action="">
             <div class="passo-plugin">
-
                 <table>
                     <tr>
                         <td style="width: 30px;"><span class="numero-plugin">1</span></td>
@@ -260,6 +250,5 @@ function be_opt(){
             <input type="submit" name="be_submit" value="Guardar Alterações" class="button-primary" />
         </form>
     </div>
-    <!--Formulário de Edição-->
     <br>
 </div>
