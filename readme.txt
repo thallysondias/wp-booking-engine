@@ -6,7 +6,7 @@ Requires at least: 3.9
 Tested up to: 5.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 1.0.4
+Version: 1.0.5
  
 
 == Description ==
@@ -62,6 +62,9 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+= 1.0.5 =
+* Fix folder to allow update and plugin
+
 = 1.0.4 =
 * Fix folder to allow update
 
