@@ -62,6 +62,9 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+= 1.0.4 =
+* Fix folder to allow update
+
 = 1.0.3 =
 * Encode SVG icon to base64
 
