@@ -1,4 +1,4 @@
-=== Booking Engine Omnibees ===
+﻿=== Booking Engine Omnibees ===
 Contributors: Omnibees, thallysondias
 Tags: Omnibees, booking engine, motor de reserva, calendario de reserva, hotel, BE, motor de reserva para hotel
 Author: Thallyson Dias
@@ -6,7 +6,7 @@ Requires at least: 5.0.0
 Tested up to: 5.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 1.1.5
+Version: 1.1.6
  
 
 == Description ==

@@ -1,11 +1,10 @@
 <?php
 ob_start();
-error_reporting(0);
 /*
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 1.1.5
+    Version: 1.1.6
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
