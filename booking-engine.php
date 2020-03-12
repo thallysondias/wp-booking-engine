@@ -1,5 +1,6 @@
 <?php
 ob_start();
+error_reporting(0);
 /*
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
