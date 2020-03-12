@@ -17,7 +17,7 @@ You can customize the language and colors of the booking engine.
 
 ## Installation
 
-* Download the lastess version.
+* Download the [Latest Version](https://github.com/thallysondias/wp-booking-engine/releases/latest) or the [Stable Version](https://widgets.omnibees.com/manual/wordpress.php)
 * Install on Wordpress "Plugin > Add Plugin".
 
 
