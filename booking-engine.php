@@ -30,12 +30,12 @@ function omnibees() {
                    'Motor de Reserva',
                    'manage_options',
                    'wp-booking-engine',
-                   'wp-booking-engine',
+                   'wp_bookinge_engine',
                    'dashicons-calendar-alt',
                    90);
 }
-function motor_reserva() {
-    include_once ('admin/motor_de_reserva.php');
+function wp_bookinge_engine() {
+    include_once ('admin/customize-be.php');
 }
 function show_widget() {
     include_once( WP_PLUGIN_DIR . '/wp-booking-engine/views/i18n/'. get_option('omnibees_idioma') .'.php' );
