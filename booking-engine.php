@@ -3,7 +3,7 @@
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 1.1.2
+    Version: 1.1.3
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
