@@ -6,7 +6,7 @@ Requires at least: 5.0.0
 Tested up to: 5.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 1.1.4
+Version: 1.1.5
  
 
 == Description ==
@@ -62,7 +62,7 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
-= 1.1.4 =
+= 1.1.5 =
 * Fix Headers error
 * Has possible use color in calendar icon
 

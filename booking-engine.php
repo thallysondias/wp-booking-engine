@@ -4,7 +4,7 @@ ob_start();
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 1.1.4
+    Version: 1.1.5
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
@@ -43,7 +43,7 @@ function show_widget() {
     include_once ('views/'. get_option('omnibees_template') .'/booking-widget.php');
 }
 function load_scripts(){    
-    if(get_option('omnibees_idioma') === "pt-PT") || get_option('omnibees_idioma') === "pt-BR")  : $local = "pt" ; endif;
+    if(get_option('omnibees_idioma') === "pt-PT" || get_option('omnibees_idioma') === "pt-BR")  : $local = "pt" ; endif;
     if(get_option('omnibees_idioma') === "es-ES") : $local = "es" ; endif;
     if(get_option('omnibees_idioma') === "en-US") : $local = "en" ; endif;
     
