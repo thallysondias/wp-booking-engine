@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+#omnibees-off-canvas #button-reserva-flutuante {
+    background: #000;
+    width: 120px;
+    text-align: center;
+    position: absolute;
+    left: -120px;
+    padding: 15px 5px 5px;
+    top: 50px;
+    transition: ease 500ms;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    color:<?php echo get_option('omnibees_texto');?>;
+    border-radius:5px 0 0 5px;    
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    
+}
+#omnibees-off-canvas #button-reserva-flutuante h5 {
+    font-size: 13px;
+    color:white
+}
+ #omnibees-off-canvas #button-reserva-flutuante img{
+     width:80px;
+ }
+#omnibees-off-canvas #button-reserva-flutuante:hover {
+    transition: ease 500ms;
+    background: #fff;
+    color:#000;
+}
+#omnibees-off-canvas #button-reserva-flutuante:hover h5 {
+      transition: ease 500ms;
+    color:#111;
+}
+ #omnibees-off-canvas #button-reserva-flutuante:hover .calendar-icon {
+     background-color:#111;
+       transition: ease 500ms;
+ }
+#omnibees-off-canvas .calendar-icon {
+    padding-top:10px;
+    background-color: white;
+    width: 100%;        
+    -webkit-mask: url('data:image/svg+xml,<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve"><g><path d="M57,4h-7V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H19V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H3 C2.447,4,2,4.447,2,5v11v43c0,0.553,0.447,1,1,1h54c0.553,0,1-0.447,1-1V16V5C58,4.447,57.553,4,57,4z M43,2h5v3v3h-5V5V2z M12,2h5 v3v3h-5V5V2z M4,6h6v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h22v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h6v9H4V6z M4,58V17h52v41H4z"/><path d="M38,23h-7h-2h-7h-2h-9v9v2v7v2v9h9h2h7h2h7h2h9v-9v-2v-7v-2v-9h-9H38z M31,25h7v7h-7V25z M38,41h-7v-7h7V41z M22,34h7v7h-7 V34z M22,25h7v7h-7V25z M13,25h7v7h-7V25z M13,34h7v7h-7V34z M20,50h-7v-7h7V50z M29,50h-7v-7h7V50z M38,50h-7v-7h7V50z M47,50h-7 v-7h7V50z M47,41h-7v-7h7V41z M47,25v7h-7v-7H47z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>')  no-repeat center;    
+    mask: url('data:image/svg+xml,<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve"><g><path d="M57,4h-7V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H19V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H3 C2.447,4,2,4.447,2,5v11v43c0,0.553,0.447,1,1,1h54c0.553,0,1-0.447,1-1V16V5C58,4.447,57.553,4,57,4z M43,2h5v3v3h-5V5V2z M12,2h5 v3v3h-5V5V2z M4,6h6v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h22v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h6v9H4V6z M4,58V17h52v41H4z"/><path d="M38,23h-7h-2h-7h-2h-9v9v2v7v2v9h9h2h7h2h7h2h9v-9v-2v-7v-2v-9h-9H38z M31,25h7v7h-7V25z M38,41h-7v-7h7V41z M22,34h7v7h-7 V34z M22,25h7v7h-7V25z M13,25h7v7h-7V25z M13,34h7v7h-7V34z M20,50h-7v-7h7V50z M29,50h-7v-7h7V50z M38,50h-7v-7h7V50z M47,50h-7 v-7h7V50z M47,41h-7v-7h7V41z M47,25v7h-7v-7H47z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>')  no-repeat center;    
+    height: 50px;
+    background-position: center;
+}
+ #omnibees-off-canvas .promolateral {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    text-align:center;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    background-size: 100% 100%;
+    background-position: center center;
+}
+#omnibees-off-canvas .promolateral a {
+    padding: 0;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#omnibees-off-canvas .promolateral h3 {
+    color: #fff;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+    font-size: 25px;
+    line-height: 31px;
+    text-shadow: -1px 0.5px #000000;
+}
+#omnibees-off-canvas .promolateral p {
+    line-height: 30px!important;
+    margin-top: 40px;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    margin: 0 0;
+}
+#omnibees-off-canvas .promolateral a:hover {
+    color: #cccccc;
+}
+#omnibees-off-canvas .promolateral .closebtn {
+    position: absolute;
+    top: 0;
+    right:10px;
+    font-size: 46px;
+    margin-left: 50px;
+    color:#fff;
+}
+#omnibees-off-canvas #main-button {
+    transition: margin-left .5s;
+    font-family: sans-serif;
+    z-index: 9999;
+    text-align: center;
+    top: 30%;
+    position: fixed;
+    margin-right: -390px;
+    width: 390px;
+    right: 0px;
+    transition: ease .5s;
+    background: rgba(200,200,200,0.7);
+    padding-bottom: 30px;
+    -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.5);
+}
+#omnibees-off-canvas .conteudo-fora {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 95%;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+#omnibees-off-canvas .conteudo-dentro {
+    padding: 20px 10px 14px 16px;
+    vertical-align: inherit !important;
+}
+#omnibees-off-canvas .hr {
+    clear: both;
+    display: block;
+    width: 100%;
+    line-height: 25px;
+    position: relative;
+    margin: 30px 0;
+    float: left;
+    line-height: 3px;
+}
+
+#omnibees-off-canvas .hr-dentro {
+    position: absolute;
+    height: 1px;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    margin-top: -1px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #fff;
+}
+#omnibees-off-canvas .oferta-btn {
+    display: block;
+    overflow: hidden;
+    padding: 2px;
+    text-align: center;
+    margin-top: 100px;
+    text-align: center;
+    margin-top: 100px;
+    color: #fff;
+    border: 2px solid #fff;
+    background: transparent;
+}
+#omnibees-off-canvas .oferta-btn a {
+    padding: 15px 8px 15px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#omnibees-off-canvas .oferta-btn span {
+    color: #fff;
+}
+@media screen and (max-height: 450px) {
+    #omnibees-off-canvas .promolateral {padding-top: 15px;}
+   #omnibees-off-canvas  .promolateral a {font-size: 18px;}
+}
+#omnibees-off-canvas .adulto select,
+#omnibees-off-canvas .crianca select,
+#omnibees-off-canvas .codigo input{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    width: 307.875px;
+
+    background: #fff;
+    -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
+    box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
+    margin: 10px 0;
+}
+#omnibees-off-canvas .codigo input{
+    padding: 10px 0;
+}
+#omnibees-off-canvas .booknow {
+    display: inline-block;
+    width: 307.875px;
+}
+#omnibees-off-canvas .booknow button{
+    vertical-align: middle;
+    border: 1px solid transparent;
+    background: #484848;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;    
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#omnibees-off-canvas .booknow button:hover{
+    background: rgba(0,0,0,0.4);
+    transition: all ease-in .1s
+}
+#omnibees-off-canvas .chamada-texto {
+    display: inline-flex;
+    padding: 0;
+
+}
+#omnibees-off-canvas .bloco-texto {
+    vertical-align: top;
+    width: 100%;
+    line-height:11px;
+    font-size:18px;
+    text-align:right;
+    text-transform:uppercase;
+}
+#omnibees-off-canvas .bloco-texto span {
+    font-size:13px;
+}
