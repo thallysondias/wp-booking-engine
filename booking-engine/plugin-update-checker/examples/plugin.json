@@ -1,9 +1,9 @@
 {
 	"name": "Booking Engine Omnibees",
 	"version": "1.0.3",
-	"download_url": "http://widgets.omnibees.com/manual/download/booking-engine.zip",
+	"download_url": "https://widgets.omnibees.com/manual/download/booking-engine.zip",
 
-	"homepage": "http://omnibees.com/",
+	"homepage": "https://omnibees.com/",
 	"requires": "3.9",
 	"tested": "5.0.2",
 	"last_updated": "2020-12-03 16:17:00",
