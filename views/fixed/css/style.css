@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 body {
-    margin-bottom: 100px!important;
+    margin-bottom: 60px!important;
 }
 .motor-reserva{
     width:100%;;
@@ -56,6 +56,7 @@ body {
     height: 35px;
     width: 35px;
     padding:8px 0 0;
+    line-height: normal!important;
 }
 .motor-reserva .motor-reserva svg path {
     fill: #484848;
@@ -342,18 +343,15 @@ body {
   color: #bbb!important;
   opacity: 1;
 }
-
-
 /*BOTÃO DE RESERVA*/
 .motor-reserva .booknow {
     display: inline-block;
     border-right: 1px solid rgba(0,0,0,0.2);
-    /*border-left: 1px solid rgba(0,0,0,0.2);*/
     padding: 0;
     padding-right:15px;
 }
 .motor-reserva .booknow button{
-     vertical-align: middle;
+    vertical-align: middle;
     border: 1px solid transparent;
     background: #484848;
     padding: 10px 20px;
@@ -362,6 +360,7 @@ body {
     cursor: pointer;
     width: 100%;
     margin: 9px 5px;
+    line-height: normal!important;
 }
 .motor-reserva .booknow button:hover{
     background: rgba(0,0,0,0.4);
