@@ -2,7 +2,7 @@
     .motor-reserva{
         background: <?php echo get_option('omnibees_bg');?>!important;
     }
-    .flatpicker input,
+    .flatpicker-omnibees-be input,
     .hospedes #lista-hospede,
     #codigo-promocional input {
         color:<?php echo get_option('omnibees_texto');?> !important;
@@ -19,8 +19,8 @@
     <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v2 ">
         <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>"> 
         <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
-        <div class="flatpicker">
-            <a class="input-button" title="toggle" data-toggle>                
+        <div class="flatpicker-omnibees-be">
+            <a class="input-button" title="toggle" data-toggle>
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve"><g><path d="M57,4h-7V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H19V1c0-0.553-0.447-1-1-1h-7c-0.553,0-1,0.447-1,1v3H3 C2.447,4,2,4.447,2,5v11v43c0,0.553,0.447,1,1,1h54c0.553,0,1-0.447,1-1V16V5C58,4.447,57.553,4,57,4z M43,2h5v3v3h-5V5V2z M12,2h5 v3v3h-5V5V2z M4,6h6v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h22v3c0,0.553,0.447,1,1,1h7c0.553,0,1-0.447,1-1V6h6v9H4V6z M4,58V17h52v41H4z"  fill="<?php echo get_option('omnibees_texto');?>"/><path d="M38,23h-7h-2h-7h-2h-9v9v2v7v2v9h9h2h7h2h7h2h9v-9v-2v-7v-2v-9h-9H38z M31,25h7v7h-7V25z M38,41h-7v-7h7V41z M22,34h7v7h-7 V34z M22,25h7v7h-7V25z M13,25h7v7h-7V25z M13,34h7v7h-7V34z M20,50h-7v-7h7V50z M29,50h-7v-7h7V50z M38,50h-7v-7h7V50z M47,50h-7 v-7h7V50z M47,41h-7v-7h7V41z M47,25v7h-7v-7H47z"  fill="<?php echo get_option('omnibees_texto');?>"/></g></svg>
             </a>
             <input id="checkInOut" type="text" placeholder="Selecione a data" data-input>
@@ -76,98 +76,113 @@
     </form>
 </div>
 <script>
-    jQuery(document).ready(function( $ ) {
-        "use strict";
-        //DATAPICKER E DATA ATUAL
+
+    console.log("Init Omnibees Booking Engine");
+    var bookingEngine = {
+      init: function() {
+        bookingEngine.selectedDate();
+        bookingEngine.showGuest();
+        bookingEngine.showAlert();
+      },
+
+      selectedDate: function() {
         Date.prototype.addDays = function(days) {
-            var dat = new Date(this.valueOf());
-            dat.setDate(dat.getDate() + days);
-            return dat;
+          var dat = new Date(this.valueOf());
+          dat.setDate(dat.getDate() + days);
+          return dat;
         }
-        var dat = new Date();  
-        $(".flatpicker").flatpickr({
-            mode: "range",
-            minDate: "today",
-            dateFormat: "d/m/Y",
-            locale: "<?php echo $local ;?>",              
-            wrap: true,
-            defaultDate: ["today", dat.addDays(2)],
+        var dat = new Date();
+        $(".flatpicker-omnibees-be").flatpickr({
+          mode: "range",
+          minDate: "today",
+          dateFormat: "d/m/Y",
+          locale: "<?php echo $local ;?>",
+          wrap: true,
+          defaultDate: ["today", dat.addDays(2)],
             onChange: function (selectedDates, dateStr, instance) {
-                let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
-                let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
-                let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");                
-             
-                $('#checkin').val(checkIn);
-                $('#checkout').val(checkOut);
+              let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
+              let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+              let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+              $('#checkin').val(checkIn);
+              $('#checkout').val(checkOut);
             }
         });
-        //Ativa bloco de hospedes
+      },
+
+      showGuest: function() {
         $("#lista-hospede").click(function() {
-            document.getElementById('box-hospede').className -= ' esconde';
+          document.getElementById('box-hospede').className -= ' esconde';
         });
-        //Detectar a quantidade de crianças
         $('#ch').on('change keyup blur', function() {
-            var val = $(this).val();
-            var output;
-            if (val < 1){                       
-                document.getElementById('ag').className -= ' ativa';
-                document.getElementById('ag').className += ' esconde';
-            }
-            $('#output').empty();
-            var idade = 1;
-            for (var i = 0, length = val; i < length; i++) {
-                output = '<div class="clearfix"><span><?php echo "$idade" ;?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
-                idade++;
-                $('#output').append(output);
-            }
+          var val = $(this).val();
+          var output;
+          if (val < 1){
+            document.getElementById('ag').className -= ' ativa';
+            document.getElementById('ag').className += ' esconde';
+          }
+          $('#output').empty();
+          var idade = 1;
+          for (var i = 0, length = val; i < length; i++) {
+            output = '<div class="clearfix"><span><?php echo "$idade" ;?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
+            idade++;
+            $('#output').append(output);
+          }
         });
-        //Inserir as idades das crianças no input #ag   
         var $salvarIdade = $(".button-ag");
         var pontoevirgula =  ";";
         $salvarIdade.click(function() {
-            var texto = "";
-            var qtd = $("#ch").val();                   
-            qtd = +qtd;
-            for (var i = 0; i < qtd; i++) {
-                if ($('#ag' + i).val()) {
-                    if (i !== qtd ) {
-                        if (i === 0){
-                            texto += $('#ag'+i).val();
-                        }else{
-                            texto += pontoevirgula + $('#ag'+i).val();
-                        }
-                    }
+          var texto = "";
+          var qtd = $("#ch").val();
+          qtd = +qtd;
+          for (var i = 0; i < qtd; i++) {
+            if ($('#ag' + i).val()) {
+              if (i !== qtd ) {
+                if (i === 0){
+                  texto += $('#ag'+i).val();
+                }else{
+                  texto += pontoevirgula + $('#ag'+i).val();
                 }
-            }             
-            $('#ag').val(texto);
-            //Adultos
-            if ($("#ad").val() > 1){  
-                document.getElementById('plural-adulto').className -= ' esconde';
-            }else{
-                document.getElementById('plural-adulto').className += ' esconde';
+              }
             }
-            $('#adultos-numero').empty();
-            $('#adultos-numero').append($("#ad").val());
-            //Crianças
-            if ($("#ch").val() === 0){
-                document.getElementById('plural-crianca').className += ' esconde';
-            }else if($("#ch").val() == 1){
-                document.getElementById('lista-crianca').className -= ' esconde';
-                document.getElementById('plural-crianca').className += ' esconde';
-            }else{
-                document.getElementById('plural-crianca').className -= ' esconde';
-                document.getElementById('lista-crianca').className -= ' esconde';
-            }
-            $('#crianca-numero').empty();
-            $('#crianca-numero').append($("#ch").val());
-            document.getElementById('box-hospede').className += ' esconde';
+          }
+          $('#ag').val(texto);
+          if ($("#ad").val() > 1){  
+            document.getElementById('plural-adulto').className -= ' esconde';
+          }else{
+            document.getElementById('plural-adulto').className += ' esconde';
+          }
+          $('#adultos-numero').empty();
+          $('#adultos-numero').append($("#ad").val());
+          //Crianças
+          if ($("#ch").val() === 0){
+            document.getElementById('plural-crianca').className += ' esconde';
+          }else if($("#ch").val() == 1){
+            document.getElementById('lista-crianca').className -= ' esconde';
+            document.getElementById('plural-crianca').className += ' esconde';
+          }else{
+            document.getElementById('plural-crianca').className -= ' esconde';
+            document.getElementById('lista-crianca').className -= ' esconde';
+          }
+          $('#crianca-numero').empty();
+          $('#crianca-numero').append($("#ch").val());
+          document.getElementById('box-hospede').className += ' esconde';
         });
-        
+      },
+
+      showAlert: function() {
         setTimeout(function(){
             $('#aviso-reserva').addClass('ativa');
         }, 5000);
         $("#aviso-reserva").click(function() {
             document.getElementById('aviso-reserva').className -= ' ativa';
         });
+      }
+    }
+
+    jQuery(document).ready(function($){
+      setTimeout(function(){
+        bookingEngine.init();
+      },500);
     });
+
 </script>

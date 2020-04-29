@@ -4,7 +4,7 @@
      #button-reserva-flutuante {
         background: <?php echo get_option('omnibees_bg');?> !important;
     }
-    .flatpicker input,
+    .flatpicker-omnibees-be input,
     .hospedes #lista-hospede,
     #codigo-promocional input,
      #button-reserva-flutuante h5{
@@ -27,14 +27,14 @@
 
 <div id="omnibees-off-canvas">
     <div id="be-off-canvas" class="promolateral">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="conteudo-fora">  
-            <div class="conteudo-dentro">  
+        <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+        <div class="conteudo-fora">
+            <div class="conteudo-dentro">
                 <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v1">
                     <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>"> 
                     <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
                     <input type="hidden" id="NRooms" name="NRooms" value="1" />
-                    <input class="flatpickr" id="checkInOut" type="text" placeholder="Selecione a data" style="display: none">
+                    <input class="flatpicker-omnibees-be" id="checkInOut" type="text" placeholder="Selecione a data" style="display: none">
                     <input type="hidden" name="CheckIn" id="checkin" value="" />
                     <input type="hidden" name="CheckOut" id="checkout" value="" /> 
                     <br>
@@ -72,27 +72,31 @@
         </a>
     </div>
     <div id="main-button">
-        <div id="button-reserva-flutuante"  onclick="openNav()" class="btn-reservar">
+        <div id="button-reserva-flutuante" class="btn-reservar">
             <div class="calendar-icon"></div>
             <h5 class="h5reservar"><?php echo "$booknow" ;?></h5>
         </div>
     </div>
 </div>
-<script>   
-    jQuery(document).ready(function ($){
-        "use strict";
+<script>
+    console.log("Init Omnibees Booking Engine");
+    var bookingEngine = {
+      init: function() {
+        bookingEngine.selectedDate();
+        bookingEngine.openCanvas();
+      },
+      selectedDate: function() {
         Date.prototype.addDays = function(days) {
             var dat = new Date(this.valueOf());
             dat.setDate(dat.getDate() + days);
             return dat;
         }
-        var dat = new Date(); 
-
-        $(".flatpickr").flatpickr({
+        var dat = new Date();
+        $(".flatpicker-omnibees-be").flatpickr({
             mode: "range",
             inline: true,
             minDate: "today",
-            dateFormat: "d/m/Y",    
+            dateFormat: "d/m/Y",
             locale: "<?php echo $local ;?>",
 
             defaultDate: ["today", dat.addDays(2)],
@@ -106,11 +110,22 @@
                 $('#checkout').val(checkOut);
             }
         });
+      },
+      openCanvas: function() {
+        $("#button-reserva-flutuante").click(function() {
+          $("#be-off-canvas").css("width", "345");
+        });
+        $("#closebtn").click(function() {
+          $("#be-off-canvas").css("width", "0");
+        });
+      }
+    }
+
+    jQuery(document).ready(function($){
+      setTimeout(function(){
+        bookingEngine.init();
+        console.log("inicioou")
+      },500);
     });
-    function openNav() {
-        document.getElementById("be-off-canvas").style.width = "345px";
-    }
-    function closeNav() {
-        document.getElementById("be-off-canvas").style.width = "0";
-    }
+
 </script>
