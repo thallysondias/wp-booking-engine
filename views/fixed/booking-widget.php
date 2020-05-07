@@ -16,7 +16,7 @@
     }
 </style>
 <div class="motor-reserva">
-    <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v2 ">
+    <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v2">
         <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>"> 
         <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
         <div class="flatpicker-omnibees-be">
@@ -86,95 +86,105 @@
       },
 
       selectedDate: function() {
-        Date.prototype.addDays = function(days) {
-          var dat = new Date(this.valueOf());
-          dat.setDate(dat.getDate() + days);
-          return dat;
-        }
-        var dat = new Date();
-        $(".flatpicker-omnibees-be").flatpickr({
-          mode: "range",
-          minDate: "today",
-          dateFormat: "d/m/Y",
-          locale: "<?php echo $local ;?>",
-          wrap: true,
-          defaultDate: ["today", dat.addDays(2)],
-            onChange: function (selectedDates, dateStr, instance) {
-              let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
-              let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
-              let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
-              $('#checkin').val(checkIn);
-              $('#checkout').val(checkOut);
+        jQuery(document).ready(function($){
+          setTimeout(function(){
+            Date.prototype.addDays = function(days) {
+              var dat = new Date(this.valueOf());
+              dat.setDate(dat.getDate() + days);
+              return dat;
             }
+            var dat = new Date();
+            $(".flatpicker-omnibees-be").flatpickr({
+              mode: "range",
+              minDate: "today",
+              dateFormat: "d/m/Y",
+              locale: "<?php echo $local ;?>",
+              wrap: true,
+              defaultDate: ["today", dat.addDays(2)],
+                onChange: function (selectedDates, dateStr, instance) {
+                  let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
+                  let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+                  let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+                  $('#checkin').val(checkIn);
+                  $('#checkout').val(checkOut);
+                }
+            });
+          },1);
         });
       },
 
       showGuest: function() {
-        $("#lista-hospede").click(function() {
-          document.getElementById('box-hospede').className -= ' esconde';
-        });
-        $('#ch').on('change keyup blur', function() {
-          var val = $(this).val();
-          var output;
-          if (val < 1){
-            document.getElementById('ag').className -= ' ativa';
-            document.getElementById('ag').className += ' esconde';
-          }
-          $('#output').empty();
-          var idade = 1;
-          for (var i = 0, length = val; i < length; i++) {
-            output = '<div class="clearfix"><span><?php echo "$idade" ;?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
-            idade++;
-            $('#output').append(output);
-          }
-        });
-        var $salvarIdade = $(".button-ag");
-        var pontoevirgula =  ";";
-        $salvarIdade.click(function() {
-          var texto = "";
-          var qtd = $("#ch").val();
-          qtd = +qtd;
-          for (var i = 0; i < qtd; i++) {
-            if ($('#ag' + i).val()) {
-              if (i !== qtd ) {
-                if (i === 0){
-                  texto += $('#ag'+i).val();
-                }else{
-                  texto += pontoevirgula + $('#ag'+i).val();
+        jQuery(document).ready(function($){
+          setTimeout(function(){
+            $("#lista-hospede").click(function() {
+              document.getElementById('box-hospede').className -= ' esconde';
+            });
+            $('#ch').on('change keyup blur', function() {
+              var val = $(this).val();
+              var output;
+              if (val < 1){
+                document.getElementById('ag').className -= ' ativa';
+                document.getElementById('ag').className += ' esconde';
+              }
+              $('#output').empty();
+              var idade = 1;
+              for (var i = 0, length = val; i < length; i++) {
+                output = '<div class="clearfix"><span><?php echo "$idade" ;?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
+                idade++;
+                $('#output').append(output);
+              }
+            });
+            var $salvarIdade = $(".button-ag");
+            var pontoevirgula =  ";";
+            $salvarIdade.click(function() {
+              var texto = "";
+              var qtd = $("#ch").val();
+              qtd = +qtd;
+              for (var i = 0; i < qtd; i++) {
+                if ($('#ag' + i).val()) {
+                  if (i !== qtd ) {
+                    if (i === 0){
+                      texto += $('#ag'+i).val();
+                    }else{
+                      texto += pontoevirgula + $('#ag'+i).val();
+                    }
+                  }
                 }
               }
-            }
-          }
-          $('#ag').val(texto);
-          if ($("#ad").val() > 1){  
-            document.getElementById('plural-adulto').className -= ' esconde';
-          }else{
-            document.getElementById('plural-adulto').className += ' esconde';
-          }
-          $('#adultos-numero').empty();
-          $('#adultos-numero').append($("#ad").val());
-          //Crianças
-          if ($("#ch").val() === 0){
-            document.getElementById('plural-crianca').className += ' esconde';
-          }else if($("#ch").val() == 1){
-            document.getElementById('lista-crianca').className -= ' esconde';
-            document.getElementById('plural-crianca').className += ' esconde';
-          }else{
-            document.getElementById('plural-crianca').className -= ' esconde';
-            document.getElementById('lista-crianca').className -= ' esconde';
-          }
-          $('#crianca-numero').empty();
-          $('#crianca-numero').append($("#ch").val());
-          document.getElementById('box-hospede').className += ' esconde';
+              $('#ag').val(texto);
+              if ($("#ad").val() > 1){  
+                document.getElementById('plural-adulto').className -= ' esconde';
+              }else{
+                document.getElementById('plural-adulto').className += ' esconde';
+              }
+              $('#adultos-numero').empty();
+              $('#adultos-numero').append($("#ad").val());
+              //Crianças
+              if ($("#ch").val() === 0){
+                document.getElementById('plural-crianca').className += ' esconde';
+              }else if($("#ch").val() == 1){
+                document.getElementById('lista-crianca').className -= ' esconde';
+                document.getElementById('plural-crianca').className += ' esconde';
+              }else{
+                document.getElementById('plural-crianca').className -= ' esconde';
+                document.getElementById('lista-crianca').className -= ' esconde';
+              }
+              $('#crianca-numero').empty();
+              $('#crianca-numero').append($("#ch").val());
+              document.getElementById('box-hospede').className += ' esconde';
+            });
+          },1);
         });
       },
 
       showAlert: function() {
-        setTimeout(function(){
+        jQuery(document).ready(function($){
+          setTimeout(function(){
             $('#aviso-reserva').addClass('ativa');
-        }, 5000);
-        $("#aviso-reserva").click(function() {
+          }, 5000);
+          $("#aviso-reserva").click(function() {
             document.getElementById('aviso-reserva').className -= ' ativa';
+          });
         });
       }
     }

@@ -78,6 +78,7 @@
         </div>
     </div>
 </div>
+
 <script>
     console.log("Init Omnibees Booking Engine");
     var bookingEngine = {
@@ -86,37 +87,45 @@
         bookingEngine.openCanvas();
       },
       selectedDate: function() {
-        Date.prototype.addDays = function(days) {
-            var dat = new Date(this.valueOf());
-            dat.setDate(dat.getDate() + days);
-            return dat;
-        }
-        var dat = new Date();
-        $(".flatpicker-omnibees-be").flatpickr({
-            mode: "range",
-            inline: true,
-            minDate: "today",
-            dateFormat: "d/m/Y",
-            locale: "<?php echo $local ;?>",
-
-            defaultDate: ["today", dat.addDays(2)],
-            onChange: function (selectedDates, dateStr, instance) {
-
-                let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
-                let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
-                let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
-
-                $('#checkin').val(checkIn);
-                $('#checkout').val(checkOut);
+        jQuery(document).ready(function($){
+          setTimeout(function(){  
+            Date.prototype.addDays = function(days) {
+                var dat = new Date(this.valueOf());
+                dat.setDate(dat.getDate() + days);
+                return dat;
             }
+            var dat = new Date();
+            $(".flatpicker-omnibees-be").flatpickr({
+                mode: "range",
+                inline: true,
+                minDate: "today",
+                dateFormat: "d/m/Y",
+                locale: "<?php echo $local ;?>",
+
+                defaultDate: ["today", dat.addDays(2)],
+                onChange: function (selectedDates, dateStr, instance) {
+
+                    let checkInOut = $('#checkInOut').val().replace(/\s/g,'');
+                    let checkIn = checkInOut.split("<?php echo $separador ;?>",6)[0].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+                    let checkOut = checkInOut.split("<?php echo $separador ;?>",6)[1].replace(/[.*+?^=!:${}()|\[\]\/\\]/g,"");
+
+                    $('#checkin').val(checkIn);
+                    $('#checkout').val(checkOut);
+                }
+            });
+          },1);
         });
       },
       openCanvas: function() {
-        $("#button-reserva-flutuante").click(function() {
-          $("#be-off-canvas").css("width", "345");
-        });
-        $("#closebtn").click(function() {
-          $("#be-off-canvas").css("width", "0");
+        jQuery(document).ready(function($){
+          setTimeout(function(){  
+            $("#button-reserva-flutuante").click(function() {
+              $("#be-off-canvas").css("width", "345");
+            });
+            $("#closebtn").click(function() {
+              $("#be-off-canvas").css("width", "0");
+            });
+          },1);
         });
       }
     }
@@ -124,8 +133,6 @@
     jQuery(document).ready(function($){
       setTimeout(function(){
         bookingEngine.init();
-        console.log("inicioou")
       },500);
     });
-
 </script>
