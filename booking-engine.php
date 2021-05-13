@@ -4,7 +4,7 @@ ob_start();
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 2.0.0
+    Version: 2.0.1
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
@@ -17,9 +17,9 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
   'wp-booking-engine'
 );
 
-add_action('admin_menu', 'omnibees');
+add_action('admin_menu', 'omnibees_widget');
 
-function omnibees() {
+function omnibees_widget() {
     add_menu_page ('Motor de Reserva',
                    'Motor de Reserva',
                    'manage_options',
