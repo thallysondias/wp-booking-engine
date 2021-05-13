@@ -16,7 +16,7 @@
     }
 </style>
 <div class="motor-reserva">
-    <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v2">
+    <form action="<?php echo get_option('omnibees_versao');?>" method="GET" target="_blank" class="motor-reserva-v2">
         <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>"> 
         <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
         <div class="flatpicker-omnibees-be">

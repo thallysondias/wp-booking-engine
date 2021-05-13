@@ -10,6 +10,7 @@ function be_opt(){
     $cor_texto = $_POST['omnibees_texto'];
     $cor_botao = $_POST['omnibees_botao'];
     $idioma = $_POST['idioma'];
+    $versao = $_POST['versao'];
 
     global $chk;
     if( get_option('omnibees_id') != trim($beid)){
@@ -29,6 +30,9 @@ function be_opt(){
     }    
     if( get_option('omnibees_idioma') != trim($idioma)){
         $chk = update_option('omnibees_idioma', trim($idioma));
+    }
+    if( get_option('omnibees_versao') != trim($versao)){
+        $chk = update_option('omnibees_versao', trim($versao));
     }
 }
 ?>
@@ -241,6 +245,27 @@ function be_opt(){
                         <option value="pt-BR" <?php if(get_option('omnibees_idioma') === "pt-BR") :?> selected="selected" <?php endif;?>>Português (BR)</option>
                         <option value="es-ES" <?php if(get_option('omnibees_idioma') === "es-ES") :?> selected="selected" <?php endif;?>>Español</option>
                         <option value="en-US" <?php if(get_option('omnibees_idioma') === "en-US") :?> selected="selected" <?php endif;?>>English</option>
+                    </select>
+                </div>
+            </div>
+            
+               
+               
+            <div class="passo-plugin">
+                <table>
+                    <tr>
+                        <td style="width: 30px;"><span class="numero-plugin">5</span></td>
+                        <td>
+                            <b>Defina a Versão para o motor de reserva</b><br>
+                            <i class="traducao-passo">Select the version for Booking Engine</i>
+                        </td>
+                    </tr>
+                </table>
+                <div class="input-plugin">
+                    <select name="versao" >
+                        <option value="https://myreservations.omnibees.com/default.aspx" <?php if(get_option('omnibees_versao') === "https://myreservations.omnibees.com/default.aspx") :?> selected="selected" <?php endif;?>>V2</option>
+                        <option value="https://book.omnibees.com/hotelresults" <?php if(get_option('omnibees_versao') === "https://book.omnibees.com/hotelresults") :?> selected="selected" <?php endif;?>>V3</option>
+                         
                     </select>
                 </div>
             </div>

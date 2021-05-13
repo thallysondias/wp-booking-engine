@@ -30,7 +30,7 @@
         <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
         <div class="conteudo-fora">
             <div class="conteudo-dentro">
-                <form action="https://myreservations.omnibees.com/default.aspx" method="GET" target="_blank" class="motor-reserva-v1">
+                <form action="<?php echo get_option('omnibees_versao');?>" method="GET" target="_blank" class="motor-reserva-v1">
                     <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>"> 
                     <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
                     <input type="hidden" id="NRooms" name="NRooms" value="1" />
