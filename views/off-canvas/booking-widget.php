@@ -48,7 +48,7 @@
                         </select>
                     </div>
                     <div class="crianca">
-                        <select name="ch">
+                        <select name="ch" id="child">
                             <option value="0" selected>0 <?php echo "$crianca" ;?></option>
                             <option value="1">1 <?php echo "$crianca" ;?></option>
                             <option value="2">2 <?php echo "$crianca" ;?>s</option>
@@ -57,6 +57,7 @@
                             <option value="5">5 <?php echo "$crianca" ;?>s</option>
                         </select>
                     </div>
+                    <input type="text" id="ag" name="ag" class="esconde" hidden="hidden">
                     <div class="codigo">
                         <input type="text" name="Code" placeholder='<?php echo "$code" ;?>'>
                     </div>
@@ -113,6 +114,28 @@
                     $('#checkout').val(checkOut);
                 }
             });
+            
+            $("#child").change(function(){
+              
+                var pontoevirgula =  ";";
+                var qtdChild =  parseInt($("#ch").val());
+                var agesChild = "";
+
+                qtdChild = +qtdChild;
+                for (var i = 0; i < qtdChild; i++) {
+                  if (i !== qtdChild ) {
+                    if (i === 0){
+                      agesChild += 0;
+                    }else{
+                    agesChild += pontoevirgula + 0;
+                    }
+                  }
+                }
+                $('#ag').val(agesChild):
+              
+            });
+            
+            
           },1);
         });
       },
