@@ -6,7 +6,7 @@ Requires at least: 5.0.0
 Tested up to: 5.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 1.3.0
+Version: 3.0.0
  
 
 == Description ==
@@ -62,6 +62,9 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+
+= 3.0.0 =
+* New installer
 
 = 1.3.0 =
 * Fixing age childs on OffCanvas version. Now is possible to add child to V3 Booking Engine
