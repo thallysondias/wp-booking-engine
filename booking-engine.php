@@ -4,7 +4,7 @@ ob_start();
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 1.2.4
+    Version: 1.3.0
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
@@ -36,8 +36,8 @@ function show_widget() {
     include_once ('views/'. get_option('omnibees_template') .'/booking-widget.php');
 }
 function wp_booking_engine_init_style(){
-    wp_enqueue_style('jquery-flatpickr-style', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/flatpickr.min.css?v=beomnibees');
-    wp_enqueue_style('omnibees-style-be', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/style.css?v=beomnibees');
+    wp_enqueue_style('jquery-flatpickr-style', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/flatpickr.min.css?v=1.3.0');
+    wp_enqueue_style('omnibees-style-be', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/style.css?v=1.3.0');
 }
 function wp_booking_engine_init_script(){
     if(get_option('omnibees_idioma') === "pt-PT" || get_option('omnibees_idioma') === "pt-BR")  : $local = "pt" ; endif;

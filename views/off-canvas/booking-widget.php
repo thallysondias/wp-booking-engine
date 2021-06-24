@@ -60,7 +60,7 @@
     <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
     <div class="conteudo-fora">
       <div class="conteudo-dentro">
-        <form action="<?php echo get_option('omnibees_versao');?>" method="GET" target="_blank" class="motor-reserva-v1">
+        <form action="<?php echo get_option('omnibees_versao');?>" method="GET" target="_blank" class="motor-reserva-v1" id="form-booking">
           <input type="hidden" id="hotel-0" name="q" value="<?php echo get_option('omnibees_id');?>">
           <input type="hidden" id="lang" name="lang" value="<?php echo get_option('omnibees_idioma');?>" />
           <input type="hidden" id="NRooms" name="NRooms" value="1" />
@@ -78,7 +78,7 @@
             </select>
           </div>
           <div class="crianca">
-            <select name="ch" id="child">
+            <select name="ch" id="ch">
               <option value="0" selected>0 <?php echo "$crianca" ;?></option>
               <option value="1">1 <?php echo "$crianca" ;?></option>
               <option value="2">2 <?php echo "$crianca" ;?>s</option>
@@ -87,7 +87,13 @@
               <option value="5">5 <?php echo "$crianca" ;?>s</option>
             </select>
           </div>
-          <input type="text" id="ag" name="ag" class="esconde" hidden="hidden">
+          
+           <div class="criancas  clearfix">
+                    <div id="output"></div>
+                    <input type="hidden" id="ag" name="ag" class="esconde" hidden="hidden" value="">
+                </div>
+          
+          
           <div class="codigo">
             <input type="text" name="Code" placeholder='<?php echo "$code" ;?>'>
           </div>
@@ -151,25 +157,63 @@
     childAge: function() {
       jQuery(document).ready(function($) {
         setTimeout(function() {
-          $("#child").change(function() {
-            console.log("teste");
-            var pontoevirgula = ";";
-            var qtdChild = parseInt($("#ch").val());
-            var agesChild = "";
-
-            qtdChild = +qtdChild;
-            for (var i = 0; i < qtdChild; i++) {
-              if (i !== qtdChild) {
-                if (i === 0) {
-                  agesChild += 0;
-                } else {
-                  agesChild += pontoevirgula + 0;
+          
+          $('#ch').on('change keyup blur', function() {
+              var val = $(this).val();
+              var output;
+              if (val < 1){
+                document.getElementById('ag').className -= ' ativa';
+                document.getElementById('ag').className += ' esconde';
+              }
+              $('#output').empty();
+              var idade = 1;
+              for (var i = 0, length = val; i < length; i++) {
+                output = '<div class="clearfix"><span><?php echo "$idade" ;?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '" style="margin-bottom:10px;"/></div>';
+                idade++;
+                $('#output').append(output);
+              }
+          });
+          
+            var pontoevirgula =  ";";
+            $( "#form-booking" ).submit(function() {
+           
+              var texto = "";
+              var qtd = $("#ch").val();
+              qtd = +qtd;
+              for (var i = 0; i < qtd; i++) {
+                if ($('#ag' + i).val()) {
+                  if (i !== qtd ) {
+                    if (i === 0){
+                      texto += $('#ag'+i).val();
+                    }else{
+                      texto += pontoevirgula + $('#ag'+i).val();
+                    }
+                  }
                 }
               }
-            }
-            $('#ag').val(agesChild);
-            console.log(agesChild);
-          });
+              $('#ag').val(texto);
+              if ($("#ad").val() > 1){  
+                document.getElementById('plural-adulto').className -= ' esconde';
+              }else{
+                document.getElementById('plural-adulto').className += ' esconde';
+              }
+              $('#adultos-numero').empty();
+              $('#adultos-numero').append($("#ad").val());
+              //Crianças
+              if ($("#ch").val() === 0){
+                document.getElementById('plural-crianca').className += ' esconde';
+              }else if($("#ch").val() == 1){
+                document.getElementById('lista-crianca').className -= ' esconde';
+                document.getElementById('plural-crianca').className += ' esconde';
+              }else{
+                document.getElementById('plural-crianca').className -= ' esconde';
+                document.getElementById('lista-crianca').className -= ' esconde';
+              }
+              $('#crianca-numero').empty();
+              $('#crianca-numero').append($("#ch").val());
+              document.getElementById('box-hospede').className += ' esconde';
+            });
+          
         }, 1);
       });
     },
@@ -186,7 +230,7 @@
         }, 1);
       });
     }
-  },
+  };
 
   jQuery(document).ready(function($) {
     setTimeout(function() {

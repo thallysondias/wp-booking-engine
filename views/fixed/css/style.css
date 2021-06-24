@@ -227,12 +227,6 @@ body {
     margin: 0 0 20px;
     color: #484848;
 }
-.motor-reserva #box-hospede select {
-    padding: 5px;
-    vertical-align: middle;
-    width:auto;
-
-}
 .motor-reserva #box-hospede  option{
     font-weight: 400;
     font-size: 14px;
@@ -244,7 +238,11 @@ body {
     vertical-align: middle;
     padding: 8px 0
 }
-.motor-reserva #box-hospede select{
+.motor-reserva #box-hospede #ad,
+.motor-reserva #box-hospede #ch{
+    padding: 5px;
+    vertical-align: middle;
+    width:auto;
     font-size: 16px;
     font-weight: bold;
     float: right;

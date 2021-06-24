@@ -231,3 +231,24 @@
 #omnibees-off-canvas .bloco-texto span {
     font-size:13px;
 }
+
+#omnibees-off-canvas .esconde {
+    display: none;
+}
+#omnibees-off-canvas #output .idade {
+  width: 50%;
+  float: right;
+  border-radius: 5px;
+}
+#omnibees-off-canvas #output span{
+  float: left;
+  padding: 15px;
+}
+#omnibees-off-canvas .clearfix {
+  overflow: auto;
+}
+#omnibees-off-canvas  .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
