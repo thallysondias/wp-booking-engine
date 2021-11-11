@@ -266,6 +266,9 @@ body {
     margin-bottom: 15px;
     display:block;
 }
+.motor-reserva #box-hospede .opcoes-hospede select{
+  min-width: auto!important;
+}
 .motor-reserva #lista-hospede .esconde {
     display: none;
 }
@@ -444,3 +447,4 @@ body {
         border: 0;
     }
 }
+
