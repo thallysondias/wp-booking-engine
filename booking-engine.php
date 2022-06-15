@@ -4,7 +4,7 @@ ob_start();
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 3.2.0
+    Version: 3.2.1
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
@@ -30,10 +30,10 @@ function omnibees_widget() {
 }
 function wp_bookinge_engine() {
     include_once ('admin/customize-be.php');
-     wp_enqueue_script('flatpickr-omnibees', plugin_dir_url( __FILE__ ) . 'admin/custom.js?v1.0' , array ( 'jquery' ), true);
+     wp_enqueue_script('flatpickr-omnibees', plugin_dir_url( __FILE__ ) . 'admin/custom.js?v1.1' , array ( 'jquery' ), true);
 }
 function show_widget() {
-    include_once( WP_PLUGIN_DIR . '/wp-booking-engine/views/i18n/'. get_option('omnibees_idioma') .'.php' );
+    include_once( 'views/i18n/'. get_option('omnibees_idioma') .'.php' );
     include_once ('views/'. get_option('omnibees_template') .'/booking-widget.php');
 }
 function wp_booking_engine_init_style(){
