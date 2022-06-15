@@ -266,9 +266,6 @@ body {
     margin-bottom: 15px;
     display:block;
 }
-.motor-reserva #box-hospede .opcoes-hospede select{
-  min-width: auto!important;
-}
 .motor-reserva #lista-hospede .esconde {
     display: none;
 }
@@ -350,8 +347,7 @@ body {
     display: inline-block;
     border-right: 1px solid rgba(0,0,0,0.2);
     /*border-left: 1px solid rgba(0,0,0,0.2);*/
-    padding: 0;
-    padding-right:15px;
+    padding: 5px 15px 0 0;
 }
 .motor-reserva .booknow button{
      vertical-align: middle;
@@ -413,7 +409,7 @@ body {
 
 .motor-reserva #aviso-reserva span{
     position: absolute;
-    bottom: -13px;
+    bottom: -21px;
     margin: 0 auto;
     /* margin-top: 4px; */
     color: #fff;
@@ -429,6 +425,20 @@ body {
     bottom: 80px !important;
     transition: all ease-in 3s!important;
 }
+.motor-reserva .hotel-selection{
+    height: 60px!important;
+    /* width: 220px!important; */
+    padding: 0 5px;
+    margin: 0!important;
+    display: inline-block;
+    font-size: 18px!important;
+    border: none!important;
+    background: transparent!important;
+    text-align: left;
+    color: #484848;
+    vertical-align: top;
+    font-family: 'Roboto';
+  }
 
 /*MOBILE*/
 @media (max-width: 767px) {
@@ -447,4 +457,3 @@ body {
         border: 0;
     }
 }
-

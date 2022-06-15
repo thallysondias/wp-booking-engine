@@ -2,11 +2,11 @@
 Contributors: Omnibees, thallysondias
 Tags: Omnibees, booking engine, motor de reserva, calendario de reserva, hotel, BE, motor de reserva para hotel
 Author: Thallyson Dias
-Requires at least: 5.0.0
-Tested up to: 5.7.2
+Requires at least: 6.0
+Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 3.0.1
+Version: 3.2.0
  
 
 == Description ==
@@ -62,6 +62,11 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+
+= 3.2.0 =
+* Add chain options (multiples hotels, max 10)
+* Fix to Wordpress 6.0
+* Add support to use Omnibees version 4 
 
 = 3.0.0 =
 * New installer

@@ -180,7 +180,8 @@
 }
 #omnibees-off-canvas .adulto select,
 #omnibees-off-canvas .crianca select,
-#omnibees-off-canvas .codigo input{
+#omnibees-off-canvas .codigo input,
+#omnibees-off-canvas .hotel-selection{
     width: 100%;
     border-radius: 5px;
     border: none;

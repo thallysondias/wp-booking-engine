@@ -4,7 +4,7 @@ ob_start();
     Plugin name: Booking Engine
     Plugin uri: widgets.omnibees.com/manual
     Description: Easy Booking Engine Omnibees for Wordpress
-    Version: 3.0.0
+    Version: 3.2.0
     Author: Omnibees
     Author uri: www.omnibees.com
     License: GPlv2 or Later
@@ -30,6 +30,7 @@ function omnibees_widget() {
 }
 function wp_bookinge_engine() {
     include_once ('admin/customize-be.php');
+     wp_enqueue_script('flatpickr-omnibees', plugin_dir_url( __FILE__ ) . 'admin/custom.js?v1.0' , array ( 'jquery' ), true);
 }
 function show_widget() {
     include_once( WP_PLUGIN_DIR . '/wp-booking-engine/views/i18n/'. get_option('omnibees_idioma') .'.php' );
@@ -37,7 +38,7 @@ function show_widget() {
 }
 function wp_booking_engine_init_style(){
     wp_enqueue_style('jquery-flatpickr-style', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/flatpickr.min.css?v=1.3.0');
-    wp_enqueue_style('omnibees-style-be', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/style.css?v=1.3.0');
+    wp_enqueue_style('omnibees-style-be', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/css/style.css?v=1.3.3');
 }
 function wp_booking_engine_init_script(){
     if(get_option('omnibees_idioma') === "pt-PT" || get_option('omnibees_idioma') === "pt-BR")  : $local = "pt" ; endif;
@@ -48,6 +49,7 @@ function wp_booking_engine_init_script(){
     wp_enqueue_script('location-flatpickr-script', plugin_dir_url( __FILE__ ) . 'views/'. get_option('omnibees_template') .'/js/location/'. $local .'.js' , array ( 'jquery','flatpickr-omnibees' ), true);
 }
 
-add_action('wp_enqueue_scripts','wp_booking_engine_init_style', 9999);
+add_action('wp_enqueue_scripts','wp_booking_engine_init_style', 100);
+add_action('wp_enqueue_scripts','wp_booking_engine_init_script',100);
 add_action('wp_footer','show_widget');
-add_action('wp_footer','wp_booking_engine_init_script');
+
