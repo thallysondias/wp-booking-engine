@@ -155,7 +155,7 @@
 </div>
 
 <script>
-  console.log("Init Omnibees Booking Engine 3.1");
+  console.log("Init Omnibees Booking Engine 3.2.2");
   var bookingEngine = {
     init: function() {
       bookingEngine.selectedDate();

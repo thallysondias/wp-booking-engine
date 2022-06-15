@@ -6,6 +6,7 @@
 
   .flatpicker-omnibees-be input,
   .hospedes #lista-hospede,
+  .hotel-selection,
   #codigo-promocional input {
     color: <?php echo get_option('omnibees_texto');
     ?> !important;
@@ -141,7 +142,7 @@
   </form>
 </div>
 <script>
-  console.log("Init Omnibees Booking Engine 3.1");
+  console.log("Init Omnibees Booking Engine 3.2.2");
   var bookingEngine = {
     init: function() {
       bookingEngine.selectedDate();

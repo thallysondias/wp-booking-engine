@@ -1,459 +1,498 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 body {
-    margin-bottom: 100px!important;
+  margin-bottom: 100px !important;
 }
-.motor-reserva{
-    width:100%;;
-    position: fixed;
-    bottom: 0;
-    -webkit-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.25);
-    box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.25);
 
-    font-family: 'Roboto', sans-serif;
+.motor-reserva {
+  width: 100%;
+  ;
+  position: fixed;
+  bottom: 0;
+  -webkit-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
 
-    background: #fff;
-    text-align: center;
-    z-index: 999;
-    height: 60px;
+  font-family: 'Roboto', sans-serif;
+
+  background: #fff;
+  text-align: center;
+  z-index: 999;
+  height: 60px;
 }
+
 .motor-reserva form {
-    margin: 0;
+  margin: 0;
 }
+
 .motor-reserva form div {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .motor-reserva select,
 .motor-reserva input[type="text"],
 .motor-reserva input[type="password"],
-.motor-reserva input[type="email"]{
-    -moz-box-sizing: border-box;
-    -moz-border-radius: 0;
-    -webkit-box-sizing: border-box;
-    -webkit-border-radius: 2px;
-    -webkit-box-shadow:none;
-    -moz-box-shadow:none;
-    box-shadow:none;
+.motor-reserva input[type="email"] {
+  -moz-box-sizing: border-box;
+  -moz-border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 
 }
+
 .motor-reserva .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .motor-reserva .flatpicker-omnibees-be {
-    display: inline-block;
-    vertical-align:top;
-    padding: 5px;
-    height: 60px;
-    border-right: 1px solid rgba(0,0,0,0.2);
-    border-left: 1px solid rgba(0,0,0,0.2);
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px;
+  height: 60px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
+
 .motor-reserva .flatpicker-omnibees-be .input-button {
-    display: inline-block;
-    vertical-align: middle;
-    height: 35px;
-    width: 35px;
-    padding:8px 0 0;
+  display: inline-block;
+  vertical-align: middle;
+  height: 35px;
+  width: 35px;
+  padding: 8px 0 0;
 }
+
 .motor-reserva .motor-reserva svg path {
-    fill: #484848;
+  fill: #484848;
 }
 
 .motor-reserva .flatpicker-omnibees-be input {
-    height: 53px!important;
-    width: 240px!important;
-    padding: 0 5px;
-    margin: 0!important;
-    display: inline-block;
-    font-size: 18px!important;
-    border: none!important;
-    background: transparent!important;
-    text-align: left;
-    color: #484848;
-    vertical-align: top;
-    font-family: 'Roboto';
+  height: 53px !important;
+  width: 240px !important;
+  padding: 0 5px;
+  margin: 0 !important;
+  display: inline-block;
+  font-size: 18px !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left;
+  color: #484848;
+  vertical-align: top;
+  font-family: 'Roboto';
 
 }
+
 /*SELECT HOTEL*/
-.motor-reserva .hotel{
-    display: inline-block;
-    padding: 5px;
-    vertical-align:top;
-    border-left: 1px solid rgba(0,0,0,0.2);
+.motor-reserva .hotel {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: top;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
 
-    text-align: left;
+  text-align: left;
 }
+
 .motor-reserva .select-sim {
-    width:250PX;
-    height:50px;
-    line-height:50px;
-    vertical-align:middle;
-    position:relative;
-    background:white;
-    overflow:hidden;
+  width: 250PX;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  position: relative;
+  background: white;
+  overflow: hidden;
 }
 
 .motor-reserva .select-sim::after {
-    content:"￬";
-    font-size: 18px;
-    color: #484848;
-    font-family:arial;
-    position:absolute;
-    top:50%;
-    right:5px;
-    transform:translate(0, -50%);
+  content: "￬";
+  font-size: 18px;
+  color: #484848;
+  font-family: arial;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translate(0, -50%);
 }
 
 .motor-reserva .select-sim:hover::after {
-    content:"";
+  content: "";
 }
 
 .motor-reserva .select-sim:hover {
-    overflow:visible;
+  overflow: visible;
 }
 
 .motor-reserva .select-sim:hover .options .option label {
-    display:inline-block;
+  display: inline-block;
 }
 
 .motor-reserva .select-sim:hover .options {
-    background:white;
-    border:1px solid #ccc;
-    position:absolute;
-    top:-1px;
-    left:-1px;
-    width:100%;
-    height:100px;
-    overflow-y:scroll;
+  background: white;
+  border: 1px solid #ccc;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
 }
 
 .motor-reserva .select-sim .options .option {
-    overflow:hidden;
+  overflow: hidden;
 }
 
 .motor-reserva .select-sim:hover .options .option {
-    height:50px;
-    overflow:hidden;
+  height: 50px;
+  overflow: hidden;
 }
 
 .motor-reserva .select-sim .options .option img {
-    vertical-align:middle;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 2px;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 2px;
 }
 
 .motor-reserva .select-sim .options .option label {
-    display:none;
+  display: none;
 }
 
 .motor-reserva .select-sim .options .option input {
-    width:0;
-    height:0;
-    overflow:hidden;
-    margin:0;
-    padding:0;
-    float:left;
-    display:inline-block;
-    /* fix specific for Firefox */
-    position: absolute;
-    left: -10000px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline-block;
+  /* fix specific for Firefox */
+  position: absolute;
+  left: -10000px;
 }
 
 .motor-reserva .select-sim .options .option input:checked + label {
-    display:block;
-    width:100%;
+  display: block;
+  width: 100%;
 }
 
 .motor-reserva .select-sim:hover .options .option input + label {
-    display:block;
+  display: block;
 }
 
 .motor-reserva .select-sim:hover .options .option input:checked + label {
-    background:#fffff0;
+  background: #fffff0;
 }
 
 /*HOSPEDES*/
-.motor-reserva .hospedes{
-    display: inline-block;
-    vertical-align: top;
-    padding: 5px;
-    height: 60px;
-    border-right: 1px solid rgba(0,0,0,0.2);
-    cursor: pointer;
+.motor-reserva .hospedes {
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px;
+  height: 60px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
+
 .motor-reserva .hospedes #lista-hospede {
-    padding: 0 10px;
-    font-size: 18px;
-    color: #484848;
-    height: 55px;
-    display: table-cell;
-    vertical-align: middle;
+  padding: 0 10px;
+  font-size: 18px;
+  color: #484848;
+  height: 55px;
+  display: table-cell;
+  vertical-align: middle;
 }
+
 .motor-reserva #box-hospede {
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid #e8e8e8;
-    padding: 20px 15px 5px;
-    color: #484848;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.10);
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    visibility: visible;
-    opacity: 1;
-    position: absolute;
-    bottom: 57px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  padding: 20px 15px 5px;
+  color: #484848;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  bottom: 57px;
 }
 
-.motor-reserva #box-hospede.esconde{
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s,margin-top 0.1s opacity 0.1s ease-in;
-    margin-top: 10px;    
+.motor-reserva #box-hospede.esconde {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, margin-top 0.1s opacity 0.1s ease-in;
+  margin-top: 10px;
 }
 
-.motor-reserva #box-hospede h3{
-    font-weight: bold;
-    font-size: 14px!important;
-    margin: 0 0 20px;
-    color: #484848;
+.motor-reserva #box-hospede h3 {
+  font-weight: bold;
+  font-size: 14px !important;
+  margin: 0 0 20px;
+  color: #484848;
 }
-.motor-reserva #box-hospede  option{
-    font-weight: 400;
-    font-size: 14px;
+
+.motor-reserva #box-hospede option {
+  font-weight: 400;
+  font-size: 14px;
 }
-.motor-reserva #box-hospede span{
-    font-size: 16px;
-    font-weight: bold;
-    float: left;
-    vertical-align: middle;
-    padding: 8px 0
+
+.motor-reserva #box-hospede span {
+  font-size: 16px;
+  font-weight: bold;
+  float: left;
+  vertical-align: middle;
+  padding: 8px 0
 }
+
 .motor-reserva #box-hospede #ad,
-.motor-reserva #box-hospede #ch{
-    padding: 5px;
-    vertical-align: middle;
-    width:auto;
-    font-size: 16px;
-    font-weight: bold;
-    float: right;
-    margin-left: 20px;
-    border: 1px solid rgba(169, 169, 169,1);
-    border-radius: 2px;
-    -webkit-appearance: menulist;
-    box-sizing: border-box;
-    align-items: center;
-    white-space: pre;
-    -webkit-rtl-ordering: logical;
-    color: black;
-    background-color: white;
-    cursor: default;
+.motor-reserva #box-hospede #ch {
+  padding: 5px;
+  vertical-align: middle;
+  width: auto;
+  font-size: 16px;
+  font-weight: bold;
+  float: right;
+  margin-left: 20px;
+  border: 1px solid rgba(169, 169, 169, 1);
+  border-radius: 2px;
+  -webkit-appearance: menulist;
+  box-sizing: border-box;
+  align-items: center;
+  white-space: pre;
+  -webkit-rtl-ordering: logical;
+  color: black;
+  background-color: white;
+  cursor: default;
 
-    margin: auto;
-    padding: 5px 8px;
+  margin: auto;
+  padding: 5px 8px;
 
 }
-.motor-reserva #box-hospede .opcoes-hospede{
-    margin-bottom: 15px;
-    display:block;
+
+.motor-reserva #box-hospede .opcoes-hospede {
+  margin-bottom: 15px;
+  display: block;
 }
+
 .motor-reserva #lista-hospede .esconde {
-    display: none;
+  display: none;
 }
+
 .motor-reserva #box-hospede #salvar-idade {
-    display: block;
+  display: block;
 
-    border-radius: 2px;
-    border:1px solid #ccc;
-    background: transparent;
-    padding: 10px 10px;
-    text-align: center;
-    cursor: pointer;
-    margin: 20px auto 5px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  background: transparent;
+  padding: 10px 10px;
+  text-align: center;
+  cursor: pointer;
+  margin: 20px auto 5px;
 
-    color: #484848;
+  color: #484848;
 }
+
 .motor-reserva #box-hospede #salvar-idade:hover {
-    background: rgba(0,0,0,0.2)
+  background: rgba(0, 0, 0, 0.2)
 }
-.motor-reserva #box-hospede .ativa{
-    display: block !important;
-    z-index:999;
+
+.motor-reserva #box-hospede .ativa {
+  display: block !important;
+  z-index: 999;
 }
+
 .motor-reserva #box-hospede .esconde {
-    display: none;
+  display: none;
 }
+
 .motor-reserva #box-hospede #output span {
-    margin-left: 15px;
+  margin-left: 15px;
 }
+
 .motor-reserva #box-hospede #output input {
-    font-size: 16px;
-    font-weight: bold;
-    float: right;
-    margin-left: 20px;
-    border: 1px solid rgba(169, 169, 169,1);
-    border-radius: 2px;
-    box-sizing: border-box;
-    align-items: center;
-    white-space: pre;
-    -webkit-rtl-ordering: logical;
-    color: black;
-    background-color: white;
-    cursor: default;
-    margin: auto;
-    padding: 5px 8px;
-    width:50px;
+  font-size: 16px;
+  font-weight: bold;
+  float: right;
+  margin-left: 20px;
+  border: 1px solid rgba(169, 169, 169, 1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  align-items: center;
+  white-space: pre;
+  -webkit-rtl-ordering: logical;
+  color: black;
+  background-color: white;
+  cursor: default;
+  margin: auto;
+  padding: 5px 8px;
+  width: 50px;
 }
-.motor-reserva #box-hospede #output div{
-    margin-bottom: 10px;
-    display:block;
+
+.motor-reserva #box-hospede #output div {
+  margin-bottom: 10px;
+  display: block;
 }
 
 /*CODIGO PROMOCINOAL*/
 .motor-reserva #codigo-promocional {
-    display: inline-flex;
-    padding: 0;
-    vertical-align: middle;
-    text-align: center;
-    position: relative;
-    /* height: 50px; */
-    margin: 0;
-    max-width: 160px;
+  display: inline-flex;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  /* height: 50px; */
+  margin: 0;
+  max-width: 160px;
 
 
 }
+
 .motor-reserva #codigo-promocional input {
-    border: none;
-    background: transparent;
-    font-size: 16px;
-}   
-.motor-reserva #code::placeholder{
-  color: #bbb!important;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+.motor-reserva #code::placeholder {
+  color: #bbb !important;
   opacity: 1;
 }
 
 
 /*BOTÃO DE RESERVA*/
 .motor-reserva .booknow {
-    display: inline-block;
-    border-right: 1px solid rgba(0,0,0,0.2);
-    /*border-left: 1px solid rgba(0,0,0,0.2);*/
-    padding: 5px 15px 0 0;
+  display: inline-block;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  /*border-left: 1px solid rgba(0,0,0,0.2);*/
+  padding: 0px 15px 0 0;
 }
-.motor-reserva .booknow button{
-     vertical-align: middle;
-    border: 1px solid transparent;
-    background: #484848;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-    margin: 9px 5px;
+
+.motor-reserva .booknow button {
+  vertical-align: middle;
+  border: 1px solid transparent;
+  background: #484848;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin: 9px 5px;
 }
-.motor-reserva .booknow button:hover{
-    background: rgba(0,0,0,0.4);
-    transition: all ease-in .1s
+
+.motor-reserva .booknow button:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transition: all ease-in .1s
 }
 
 .motor-reserva .powered-omnibees {
-    position: relative;
-    width: 100%;
-    background: #292c31;
-    text-align: center;
-    font-size: 11px;
-    color: #ccc;
+  position: relative;
+  width: 100%;
+  background: #292c31;
+  text-align: center;
+  font-size: 11px;
+  color: #ccc;
 }
 
 .motor-reserva #aviso-reserva:before {
-    content: '+';
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #333;
-    color: #ccc;
-    transform: rotate(45deg);
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    text-align: center;
-    font-size: 16px;
-}
-.motor-reserva #aviso-reserva{
-    width: 165px;
-    position: relative;
-    background: #ffffff;
-    border-radius: .4em;
-
-    opacity: 0;
-    transition: all ease-in 0.5s!important;
-    position: absolute;
-    bottom: 90px;
-
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    cursor: pointer;
-
-    padding: 10px; 
+  content: '+';
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #333;
+  color: #ccc;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  text-align: center;
+  font-size: 16px;
 }
 
-.motor-reserva #aviso-reserva span{
-    position: absolute;
-    bottom: -21px;
-    margin: 0 auto;
-    /* margin-top: 4px; */
-    color: #fff;
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    text-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    text-shadow: 0px 3px 5px rgba(0,0,0,0.75);
+.motor-reserva #aviso-reserva {
+  width: 165px;
+  position: relative;
+  background: #ffffff;
+  border-radius: .4em;
+
+  opacity: 0;
+  transition: all ease-in 0.5s !important;
+  position: absolute;
+  bottom: 90px;
+
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+
+  padding: 10px;
 }
+
+.motor-reserva #aviso-reserva span {
+  position: absolute;
+  bottom: -21px;
+  margin: 0 auto;
+  /* margin-top: 4px; */
+  color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  text-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.75);
+}
+
 /*ALERTA DE RESERVA*/
 .motor-reserva .ativa {
-    opacity: 1!important;
-    background: blue;
-    display: block!important;
-    bottom: 80px !important;
-    transition: all ease-in 3s!important;
+  opacity: 1 !important;
+  background: blue;
+  display: block !important;
+  bottom: 80px !important;
+  transition: all ease-in 3s !important;
 }
-.motor-reserva .hotel-selection{
-    height: 60px!important;
-    /* width: 220px!important; */
-    padding: 0 5px;
-    margin: 0!important;
-    display: inline-block;
-    font-size: 18px!important;
-    border: none!important;
-    background: transparent!important;
-    text-align: left;
-    color: #484848;
-    vertical-align: top;
-    font-family: 'Roboto';
-  }
+
+.motor-reserva .hotel-selection {
+  height: 60px !important;
+  /* width: 220px!important; */
+  padding: 0 5px;
+  margin: 0 !important;
+  display: inline-block;
+  font-size: 18px !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left;
+  color: #484848;
+  vertical-align: top;
+  font-family: 'Roboto';
+}
 
 /*MOBILE*/
 @media (max-width: 767px) {
-    .motor-reserva .flatpicker-omnibees-be,
-    .motor-reserva .hospedes,
-    .motor-reserva #codigo-promocional{
-        display: none;
-    }
-    .motor-reserva #aviso-reserva {
-        width: 40%;
-        margin: 0 auto;
-        left: 30%;
-    }
-    .motor-reserva .booknow {
-        width: 80%;
-        border: 0;
-    }
+
+  .motor-reserva .flatpicker-omnibees-be,
+  .motor-reserva .hospedes,
+  .motor-reserva #codigo-promocional {
+    display: none;
+  }
+
+  .motor-reserva #aviso-reserva {
+    width: 40%;
+    margin: 0 auto;
+    left: 30%;
+  }
+
+  .motor-reserva .booknow {
+    width: 80%;
+    border: 0;
+  }
+
+  .motor-reserva {
+    height: auto;
+  }
 }

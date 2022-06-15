@@ -6,7 +6,7 @@ Requires at least: 6.0
 Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 3.2.1
+Version: 3.2.2
  
 
 == Description ==
@@ -63,9 +63,10 @@ Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
 
-= 3.2.1 =
+= 3.2.2 =
 * Fixing i18n directory
 * Fixing mobile version on fixed BE to select hotels
+* Fixing CSS on fixed widget
 
 = 3.2.0 =
 * Add chain options (multiples hotels, max 10)
