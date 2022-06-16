@@ -471,6 +471,9 @@ body {
   vertical-align: top;
   font-family: 'Roboto';
 }
+.motor-reserva .hotel-selection option{
+  color: #111
+}
 
 /*MOBILE*/
 @media (max-width: 767px) {

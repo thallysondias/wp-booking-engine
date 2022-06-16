@@ -63,6 +63,9 @@ Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
 
+= 3.2.3 =
+* Fixing css on option select
+
 = 3.2.2 =
 * Fixing i18n directory
 * Fixing mobile version on fixed BE to select hotels
