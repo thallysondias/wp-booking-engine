@@ -8,3 +8,4 @@ $booknow = 'Reservar Ahora';
 $aviso = 'Reserve ahora, con el mejor precio garantizado';
 $local = 'es';
 $separador = 'a';
+$da = 'del';

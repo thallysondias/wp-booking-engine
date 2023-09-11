@@ -6,12 +6,9 @@ body {
 
 .motor-reserva {
   width: 100%;
-  ;
-  position: fixed;
-  bottom: 0;
-  -webkit-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
 
   font-family: 'Roboto', sans-serif;
 
@@ -19,6 +16,7 @@ body {
   text-align: center;
   z-index: 999;
   height: 60px;
+  overflow: hidden;
 }
 
 .motor-reserva form {
@@ -175,16 +173,16 @@ body {
   left: -10000px;
 }
 
-.motor-reserva .select-sim .options .option input:checked + label {
+.motor-reserva .select-sim .options .option input:checked+label {
   display: block;
   width: 100%;
 }
 
-.motor-reserva .select-sim:hover .options .option input + label {
+.motor-reserva .select-sim:hover .options .option input+label {
   display: block;
 }
 
-.motor-reserva .select-sim:hover .options .option input:checked + label {
+.motor-reserva .select-sim:hover .options .option input:checked+label {
   background: #fffff0;
 }
 
@@ -203,8 +201,18 @@ body {
   font-size: 18px;
   color: #484848;
   height: 55px;
-  display: table-cell;
+  display: flex;
   vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+.motor-reserva #lista-hospede #adultos-numero,
+.motor-reserva #lista-hospede #crianca-numero {
+  margin-right:3px;
+  display: inline-block;
+}
+.motor-reserva #lista-hospede #crianca-numero{
+  margin-left: 3px;
 }
 
 .motor-reserva #box-hospede {
@@ -224,7 +232,8 @@ body {
   visibility: visible;
   opacity: 1;
   position: absolute;
-  bottom: 57px;
+  top: 60px;
+  z-index: 9999;
 }
 
 .motor-reserva #box-hospede.esconde {
@@ -386,7 +395,7 @@ body {
   color: #fff;
   cursor: pointer;
   width: 100%;
-  margin: 9px 5px;
+  margin: 7px 5px;
 }
 
 .motor-reserva .booknow button:hover {
@@ -403,51 +412,6 @@ body {
   color: #ccc;
 }
 
-.motor-reserva #aviso-reserva:before {
-  content: '+';
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #333;
-  color: #ccc;
-  transform: rotate(45deg);
-  position: absolute;
-  right: -10px;
-  top: -10px;
-  text-align: center;
-  font-size: 16px;
-}
-
-.motor-reserva #aviso-reserva {
-  width: 165px;
-  position: relative;
-  background: #ffffff;
-  border-radius: .4em;
-
-  opacity: 0;
-  transition: all ease-in 0.5s !important;
-  position: absolute;
-  bottom: 90px;
-
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  cursor: pointer;
-
-  padding: 10px;
-}
-
-.motor-reserva #aviso-reserva span {
-  position: absolute;
-  bottom: -21px;
-  margin: 0 auto;
-  /* margin-top: 4px; */
-  color: #fff;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  text-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.75);
-}
-
 /*ALERTA DE RESERVA*/
 .motor-reserva .ativa {
   opacity: 1 !important;
@@ -459,7 +423,7 @@ body {
 
 .motor-reserva .hotel-selection {
   height: 60px !important;
-  width: 220px!important;
+  width: 220px !important;
   padding: 0 5px;
   margin: 0 !important;
   display: inline-block;
@@ -471,7 +435,8 @@ body {
   vertical-align: top;
   font-family: 'Roboto';
 }
-.motor-reserva .hotel-selection option{
+
+.motor-reserva .hotel-selection option {
   color: #111
 }
 
@@ -481,18 +446,40 @@ body {
   .motor-reserva .flatpicker-omnibees-be,
   .motor-reserva .hospedes,
   .motor-reserva #codigo-promocional {
+    display: block;
+    width: 100%;
+    border: 0 !important;
+    max-width: 100%;
+    text-align: center;
+  }
+  .motor-reserva #codigo-promocional{
     display: none;
   }
-
+  .motor-reserva .hospedes #lista-hospede {
+    display: block;
+  }
   .motor-reserva #aviso-reserva {
     width: 40%;
     margin: 0 auto;
     left: 30%;
   }
 
+  .motor-reserva #box-hospede {
+    bottom: auto;
+    position: absolute;
+    width: 97%;
+    z-index: 999;
+  }
+
+
+
   .motor-reserva .booknow {
     width: 80%;
     border: 0;
+  }
+
+  #aviso-reserva {
+    display: none !important;
   }
 
   .motor-reserva {

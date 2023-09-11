@@ -1,47 +1,51 @@
 <?php
 global $chk;
-if(isset($_POST['be_submit'])){
-    be_opt();
+if (isset($_POST['be_submit'])) {
+  be_opt();
 }
-function be_opt(){
-    $beid = $_POST['q'];
-  
-    $hotelsId = $_POST['hotel_id'];
-    $hotelsName = $_POST['hotel_name'];
-  
-    $template = $_POST['modelo'];
-    $cor_background = $_POST['omnibees_bg'];
-    $cor_texto = $_POST['omnibees_texto'];
-    $cor_botao = $_POST['omnibees_botao'];
-    $idioma = $_POST['idioma'];
-    $versao = $_POST['versao'];
+function be_opt()
+{
+  $hotelsId = $_POST['hotel_id'];
+  $hotelsName = $_POST['hotel_name'];
 
-    global $chk;
-    if( get_option('omnibees_id') != trim($beid)){
-        $chk = update_option( 'omnibees_id', trim($beid));
-    }
-  
-    $chk = update_option('hotel_id', $hotelsId);
-    $chk = update_option('hotel_name', $hotelsName);
-    
-    if( get_option('omnibees_template') != trim($template)){
-        $chk = update_option( 'omnibees_template', trim($template));
-    }
-    if( get_option('omnibees_bg') != trim($cor_background)){
-        $chk = update_option( 'omnibees_bg', trim($cor_background));
-    }
-    if( get_option('omnibees_texto') != trim($cor_texto)){
-        $chk = update_option('omnibees_texto', trim($cor_texto));
-    }
-    if( get_option('omnibees_botao') != trim($cor_botao)){
-        $chk = update_option('omnibees_botao', trim($cor_botao));
-    }    
-    if( get_option('omnibees_idioma') != trim($idioma)){
-        $chk = update_option('omnibees_idioma', trim($idioma));
-    }
-    if( get_option('omnibees_versao') != trim($versao)){
-        $chk = update_option('omnibees_versao', trim($versao));
-    }
+  $template = $_POST['modelo'];
+  $style = $_POST['style_template'];
+  $cor_background = $_POST['omnibees_bg'];
+  $cor_texto = $_POST['omnibees_texto'];
+  $cor_botao = $_POST['omnibees_botao'];
+  $idioma = $_POST['idioma'];
+  $versao = $_POST['versao'];
+  $affiliate = $_POST['omnibees_affiliate'];  
+
+  global $chk;
+
+  $chk = update_option('hotel_id', $hotelsId);
+  $chk = update_option('hotel_name', $hotelsName);
+
+  if (get_option('omnibees_template') != trim($template)) {
+    $chk = update_option('omnibees_template', trim($template));
+  }
+  if (get_option('omnibees_style') != trim($style)) {
+    $chk = update_option('omnibees_style', trim($style));
+  }
+  if (get_option('omnibees_bg') != trim($cor_background)) {
+    $chk = update_option('omnibees_bg', trim($cor_background));
+  }
+  if (get_option('omnibees_texto') != trim($cor_texto)) {
+    $chk = update_option('omnibees_texto', trim($cor_texto));
+  }
+  if (get_option('omnibees_botao') != trim($cor_botao)) {
+    $chk = update_option('omnibees_botao', trim($cor_botao));
+  }
+  if (get_option('omnibees_idioma') != trim($idioma)) {
+    $chk = update_option('omnibees_idioma', trim($idioma));
+  }
+  if (get_option('omnibees_versao') != trim($versao)) {
+    $chk = update_option('omnibees_versao', trim($versao));
+  }
+  if (get_option('omnibees_affiliate') != trim($affiliate)) {
+    $chk = update_option('omnibees_affiliate', trim($affiliate));
+  }
 }
 ?>
 <style>
@@ -210,24 +214,24 @@ function be_opt(){
   .field_wrapper input[type="number"] {
     width: 100px;
   }
-
 </style>
 
 
 <div class="logo-plugin">
   <a href="https://www.omnibees.com" title="Ir para o Website da Omnibees">
-    <img src="https://widgets.omnibees.com/manual/img/logo/logo-nova.png" alt="Omnibees - Intelligent Hotel Distribution">
+    <img src="https://widgets.omnibees.com/manual/img/logo/logo-nova.png"
+      alt="Omnibees - Intelligent Hotel Distribution">
   </a>
 </div>
 
 <!--Mensagem de Sucesso-->
-<?php if(isset($_POST['be_submit']) && $chk):?>
-<div id="message" class="updated">
-  <p><b>Motor de reserva atualizado!</b><br>
-    <i>Booking Engine Updated</i>
-  </p>
-</div>
-<?php endif;?>
+<?php if (isset($_POST['be_submit']) && $chk): ?>
+  <div id="message" class="updated">
+    <p><b>Motor de reserva atualizado!</b><br>
+      <i>Booking Engine Updated</i>
+    </p>
+  </div>
+<?php endif; ?>
 
 
 <div class="background-plugin">
@@ -264,28 +268,30 @@ function be_opt(){
             <div class="container-hotels">
 
               <?php
-                $selectedHotelId = get_option('hotel_id');
-                $selectedHotelName = get_option('hotel_name');                  
-                $can_foreach = is_array($selectedHotelId) || is_object($selectedHotelId);
-             
+              $selectedHotelId = get_option('hotel_id');
+              $selectedHotelName = get_option('hotel_name');
+              $can_foreach = is_array($selectedHotelId) || is_object($selectedHotelId);
+
               if ($can_foreach) {
-                 $selectedHotel = array_combine($selectedHotelId, $selectedHotelName); 
-              
-                foreach ($selectedHotel as $id => $name) {  ?>
+                $selectedHotel = array_combine($selectedHotelId, $selectedHotelName);
+
+                foreach ($selectedHotel as $id => $name) { ?>
                   <div class="added-hotels">
                     <input type="number" name="hotel_id[]" value="<?php echo $id; ?>" placeholder="ID" />
                     <input type="text" name="hotel_name[]" value="<?php echo $name; ?>" placeholder="Nome do Hotel" />
                     <a href="javascript:void(0);" class="remove_button">Remover</a>
                   </div>
-              <?php }
-              }?>
+                <?php }
+              } ?>
             </div>
           </div>
         </div>
         <span class="observacao">
-          Caso não saiba qual o ID do seu hotel, entre em contado através do email <a href="mailto:servicedesk@omnibees.com" title="Service Desk Omnibees">servicedesk@omnibees.com</a>
+          Caso não saiba qual o ID do seu hotel, entre em contado através do email <a
+            href="mailto:servicedesk@omnibees.com" title="Service Desk Omnibees">servicedesk@omnibees.com</a>
           <br>
-          If you do not know your hotel ID, please contact <a href="mailto:servicedesk@omnibees.com" title="Service Desk Omnibees">servicedesk@omnibees.com</a>
+          If you do not know your hotel ID, please contact <a href="mailto:servicedesk@omnibees.com"
+            title="Service Desk Omnibees">servicedesk@omnibees.com</a>
         </span>
       </div>
       <div class="passo-plugin">
@@ -299,20 +305,44 @@ function be_opt(){
           </tr>
         </table>
         <table>
-          <tr>
-            <td style="text-align: center;">
-              <img src="https://widgets.omnibees.com/wordpress/icones-templates-02.png" alt="Template Rodapé" for="model1">
-              <h6 style="margin: 0">Fixo no Rodapé</h6>
-              <input type="radio" name="modelo" value="fixed" <?php if(get_option('omnibees_template') === "fixed") :?> checked="checked" <?php endif;?>>
-            </td>
-            <td style="text-align: center;">
-              <img src="https://widgets.omnibees.com/wordpress/icones-templates-03.png" alt="Template Off-Canvas" for="model2">
-              <h6 style="margin: 0">Off-canvas</h6>
-              <input id="model2" type="radio" name="modelo" value="off-canvas" <?php if(get_option('omnibees_template') === "off-canvas") :?> checked="checked" <?php endif;?>>
-            </td>
-          </tr>
+          <tbody style="vertical-align: top;">
+            <tr>
+              <td style="text-align: center;">
+                <img src="https://widgets.omnibees.com/wordpress/icones-templates-02.png" alt="Template Rodapé"
+                  for="model1">
+                <h6 style="margin: 0">Fixo no Rodapé</h6>
+                <input type="radio" name="modelo" value="fixed" <?php if (get_option('omnibees_template') === "fixed"): ?>
+                    checked="checked" <?php endif; ?>>
+              </td>
+              <td style="text-align: center;">
+                <img src="https://widgets.omnibees.com/wordpress/icones-templates-03.png" alt="Template Off-Canvas"
+                  for="model2">
+                <h6 style="margin: 0">Off-canvas</h6>
+                <input id="model2" type="radio" name="modelo" value="off-canvas" <?php if (get_option('omnibees_template') === "off-canvas"): ?> checked="checked" <?php endif; ?>>
+                 
+                <div class="style-template">
+                <select name="style_template">
+                  <option value="1" <?php if (get_option('omnibees_style') === "1"): ?> selected="selected" <?php endif; ?>>Square
+                  </option>
+                  <option value="2" <?php if (get_option('omnibees_style') === "2"): ?> selected="selected" <?php endif; ?>>Circle
+                  </option>
+                </select>
+                </div>
+              </td>
+              
+              <td style="text-align: center;">
+                <img src="https://widgets.omnibees.com/wordpress/icones-templates-03.png" alt="Template Shortcode"
+                  for="model3">
+                <h6 style="margin: 0">Shortcode</h6>
+                <input id="model3" type="radio" name="modelo" value="shortcode" <?php if (get_option('omnibees_template') === "shortcode"): ?> checked="checked" <?php endif; ?>>
+                <br>
+                <input type="text" disabled value="[omnibees_widgets]">
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
+
       <div class="passo-plugin">
         <table>
           <tr>
@@ -327,15 +357,17 @@ function be_opt(){
         <table>
           <tr>
             <div>
-              <input type="color" id="omnibees_bg" name="omnibees_bg" value="<?php echo get_option('omnibees_bg');?>">
+              <input type="color" id="omnibees_bg" name="omnibees_bg" value="<?php echo get_option('omnibees_bg'); ?>">
               <label for="body">Cor do Fundo</label>
             </div>
             <div>
-              <input type="color" id="omnibees_texto" name="omnibees_texto" value="<?php echo get_option('omnibees_texto');?>">
+              <input type="color" id="omnibees_texto" name="omnibees_texto"
+                value="<?php echo get_option('omnibees_texto'); ?>">
               <label for="body">Cor do Texto</label>
             </div>
             <div>
-              <input type="color" id="omnibees_botao" name="omnibees_botao" value="<?php echo get_option('omnibees_botao');?>" />
+              <input type="color" id="omnibees_botao" name="omnibees_botao"
+                value="<?php echo get_option('omnibees_botao'); ?>" />
               <label for="feet">Cor do Botão</label>
             </div>
           </tr>
@@ -353,10 +385,10 @@ function be_opt(){
         </table>
         <div class="input-plugin">
           <select name="idioma">
-            <option value="pt-PT" <?php if(get_option('omnibees_idioma') === "pt-PT") :?> selected="selected" <?php endif;?>>Português (PT)</option>
-            <option value="pt-BR" <?php if(get_option('omnibees_idioma') === "pt-BR") :?> selected="selected" <?php endif;?>>Português (BR)</option>
-            <option value="es-ES" <?php if(get_option('omnibees_idioma') === "es-ES") :?> selected="selected" <?php endif;?>>Español</option>
-            <option value="en-US" <?php if(get_option('omnibees_idioma') === "en-US") :?> selected="selected" <?php endif;?>>English</option>
+            <option value="pt-PT" <?php if (get_option('omnibees_idioma') === "pt-PT"): ?> selected="selected" <?php endif; ?>>Português (PT)</option>
+            <option value="pt-BR" <?php if (get_option('omnibees_idioma') === "pt-BR"): ?> selected="selected" <?php endif; ?>>Português (BR)</option>
+            <option value="es-ES" <?php if (get_option('omnibees_idioma') === "es-ES"): ?> selected="selected" <?php endif; ?>>Español</option>
+            <option value="en-US" <?php if (get_option('omnibees_idioma') === "en-US"): ?> selected="selected" <?php endif; ?>>English</option>
           </select>
         </div>
       </div>
@@ -372,12 +404,29 @@ function be_opt(){
         </table>
         <div class="input-plugin">
           <select name="versao">
-            <option value="2" <?php if(get_option('omnibees_versao') === "2") :?> selected="selected" <?php endif;?>>V2</option>
-            <option value="3" <?php if(get_option('omnibees_versao') === "3") :?> selected="selected" <?php endif;?>>V3</option>
-            <option value="4" <?php if(get_option('omnibees_versao') === "4") :?> selected="selected" <?php endif;?>>V4</option>
+            <option value="3" <?php if (get_option('omnibees_versao') === "3"): ?> selected="selected" <?php endif; ?>>V3
+            </option>
+            <option value="4" <?php if (get_option('omnibees_versao') === "4"): ?> selected="selected" <?php endif; ?>>V4
+            </option>
           </select>
         </div>
       </div>
+
+      <div class="passo-plugin">
+        <table>
+          <tr>
+            <td style="width: 30px;"><span class="numero-plugin">6</span></td>
+            <td>
+              <b>Utilize uma referência de Afiliado</b><br>
+              <i class="traducao-passo">Use a affiliate code</i>
+            </td>
+          </tr>
+        </table>
+        <div class="input-plugin">
+          <input name="omnibees_affiliate" type="text" value="<?php echo get_option('omnibees_affiliate'); ?>">
+        </div>
+      </div>
+
       <div style="border-bottom:1px solid #eee;">
       </div>
       <br><br>
