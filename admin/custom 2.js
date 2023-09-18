@@ -1,5 +1,5 @@
  jQuery(document).ready(function($) {
-    var maxField = 10; //Input fields increment limitation
+    var maxField = 50; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper .container-hotels'); //Input field wrapper
     var fieldHTML = '<div class="added-hotels"><input type="number" name="hotel_id[]" value="" placeholder="ID" /><input type="text" name="hotel_name[]" value="" placeholder="Nome do Hotel" /><a href="javascript:void(0);" class="remove_button">Remover</a></div>'; //New input field html 

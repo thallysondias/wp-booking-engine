@@ -6,7 +6,7 @@ Requires at least: 6.0
 Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 4.1
+Version: 4.2
  
 
 == Description ==
@@ -62,6 +62,12 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+
+= 4.2 =
+* Fix Style on fixed
+* Fix images absolute link
+* Add support to 50 hotels
+* Fix z-index to offcanvas
 
 = 4.1 =
 * Fix outline fields on chrome

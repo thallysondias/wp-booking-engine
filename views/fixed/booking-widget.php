@@ -22,6 +22,16 @@
       ?>
       !important;
   }
+  .flatpickr-day.selected.startRange+.endRange:not(:nth-child(7n+1)),
+  .flatpickr-day.startRange.startRange+.endRange:not(:nth-child(7n+1)),
+  .flatpickr-day.endRange.startRange+.endRange:not(:nth-child(7n+1)) {
+    -webkit-box-shadow: -10px 0 0
+    <?php echo get_option('omnibees_botao');
+    ?>!important;
+    box-shadow: -10px 0 0
+    <?php echo get_option('omnibees_botao');
+    ?>!important;
+  }
 
   .flatpickr-day.selected,
   .flatpickr-day.startRange,
