@@ -13,11 +13,13 @@
   .flatpickr-day.startRange.startRange+.endRange:not(:nth-child(7n+1)),
   .flatpickr-day.endRange.startRange+.endRange:not(:nth-child(7n+1)) {
     -webkit-box-shadow: -10px 0 0
-    <?php echo get_option('omnibees_botao');
-    ?>!important;
+      <?php echo get_option('omnibees_botao');
+      ?>
+      !important;
     box-shadow: -10px 0 0
-    <?php echo get_option('omnibees_botao');
-    ?>!important;
+      <?php echo get_option('omnibees_botao');
+      ?>
+      !important;
   }
 
   .flatpicker-omnibees-be input,
@@ -95,11 +97,10 @@
 
         $url = content_url();
         $versionBe = get_option('omnibees_versao');
+        $customUrl = get_option('omnibees_url');
 
-        if ($versionBe === "4" || $versionBe === "3") {
-          $actionBe = "https://book.omnibees.com/hotelresults";
-        } elseif ($versionBe === "2") {
-          $actionBe = "https://myreservations.omnibees.com/default.aspx";
+        if ($customUrl !== '') {
+          $actionBe = $customUrl;
         } else {
           $actionBe = "https://book.omnibees.com/hotelresults";
         }

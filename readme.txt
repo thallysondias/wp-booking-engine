@@ -63,6 +63,9 @@ Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
 
+= 4.3.0 =
+* Add custom domain field
+
 = 4.2.1 =
 * Fix CSS calendar padding on offcanvas
 

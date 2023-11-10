@@ -16,6 +16,7 @@ function be_opt()
   $idioma = $_POST['idioma'];
   $versao = $_POST['versao'];
   $affiliate = $_POST['omnibees_affiliate'];  
+  $custom_url = $_POST['omnibees_url'];  
 
   global $chk;
 
@@ -45,6 +46,9 @@ function be_opt()
   }
   if (get_option('omnibees_affiliate') != trim($affiliate)) {
     $chk = update_option('omnibees_affiliate', trim($affiliate));
+  }
+  if (get_option('omnibees_url') != trim($custom_url)) {
+    $chk = update_option('omnibees_url', trim($custom_url));
   }
 }
 ?>
@@ -425,6 +429,23 @@ function be_opt()
         <div class="input-plugin">
           <input name="omnibees_affiliate" type="text" value="<?php echo get_option('omnibees_affiliate'); ?>">
         </div>
+      </div>
+
+      <div class="passo-plugin">
+        <table>
+          <tr>
+            <td style="width: 30px;"><span class="numero-plugin">7</span></td>
+            <td>
+              <b>Possui dominio personalizado?</b><br>
+              <i class="traducao-passo">Has custom domain?</i>
+            </td>
+          </tr>
+        </table>
+        <div class="input-plugin">
+          <input name="omnibees_url" type="url" value="<?php echo get_option('omnibees_url'); ?>">
+          <i class="traducao-passo"><br>Utilize apenas se souber o seu dominio personalizado, caso não saiba deixe em branco.</i>
+        </div>
+       
       </div>
 
       <div style="border-bottom:1px solid #eee;">
