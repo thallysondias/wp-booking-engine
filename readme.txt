@@ -6,7 +6,7 @@ Requires at least: 6.0
 Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 4.2.1
+Version: 5.0
  
 
 == Description ==
@@ -62,6 +62,9 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+= 5.0 =
+* Remove all JQuery Dependency on Widgets Offcanvas and Fixed
+* Fix custom domain field when NULL ou FALSE
 
 = 4.3.0 =
 * Add custom domain field

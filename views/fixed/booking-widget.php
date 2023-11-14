@@ -66,10 +66,11 @@
 </style>
 <div class="motor-reserva">
   <?php
+  $url = content_url();
   $versionBe = get_option('omnibees_versao');
   $customUrl = get_option('omnibees_url');
 
-  if ($customUrl !== '') {
+  if ($customUrl !== '' && $customUrl !== false) {
     $actionBe = $customUrl;
   } else {
     $actionBe = "https://book.omnibees.com/hotelresults";
@@ -183,123 +184,122 @@
   </form>
 </div>
 <script>
-  console.log("Init Omnibees Booking Engine 3.2.2");
+  console.log("Init Omnibees Booking Engine 5.0");
+
   var bookingEngine = {
     init: function () {
-      bookingEngine.selectedDate();
-      bookingEngine.showGuest();
-      bookingEngine.showAlert();
+      this.selectedDate();
+      this.showGuest();
+      this.showAlert();
     },
 
     selectedDate: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
-          Date.prototype.addDays = function (days) {
-            var dat = new Date(this.valueOf());
-            dat.setDate(dat.getDate() + days);
-            return dat;
+      Date.prototype.addDays = function (days) {
+        var dat = new Date(this.valueOf());
+        dat.setDate(dat.getDate() + days);
+        return dat;
+      };
+
+      var dat = new Date();
+      var flatpickrElements = document.querySelectorAll(".flatpicker-omnibees-be");
+
+      flatpickrElements.forEach(function (element) {
+        flatpickr(element, {
+          mode: "range",
+          minDate: "today",
+          dateFormat: "d/m/Y",
+          locale: "<?php echo $local; ?>",
+          wrap: true,
+          defaultDate: ["today", dat.addDays(2)],
+          onChange: function (selectedDates) {
+            var _this = this;
+            var dateArr = selectedDates.map(function (date) {
+              return _this.formatDate(date, 'dmY');
+            });
+            document.getElementById('checkin').value = dateArr[0];
+            document.getElementById('checkout').value = dateArr[1];
           }
-          var dat = new Date();
-          $(".flatpicker-omnibees-be").flatpickr({
-            mode: "range",
-            minDate: "today",
-            dateFormat: "d/m/Y",
-            locale: "<?php echo $local; ?>",
-            wrap: true,
-            defaultDate: ["today", dat.addDays(2)],
-            onChange: function (selectedDates) {
-              var _this = this;
-              var dateArr = selectedDates.map(function (date) {
-                return _this.formatDate(date, 'dmY');
-              });
-              $('#checkin').val(dateArr[0]);
-              $('#checkout').val(dateArr[1]);
-            }
-          });
-        }, 1);
+        });
       });
     },
 
     showGuest: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
-          $("#lista-hospede").click(function () {
-            document.getElementById('box-hospede').className -= ' esconde';
-          });
-          $('#ch').on('change keyup blur', function () {
-            var val = $(this).val();
-            var output;
-            if (val < 1) {
-              document.getElementById('ag').className -= ' ativa';
-              document.getElementById('ag').className += ' esconde';
-            }
-            $('#output').empty();
-            var idade = 1;
-            for (var i = 0, length = val; i < length; i++) {
-              output = '<div class="clearfix"><span><?php echo "$idade"; ?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
-              idade++;
-              $('#output').append(output);
-            }
-          });
-          var $salvarIdade = $(".button-ag");
-          var pontoevirgula = ";";
-          $salvarIdade.click(function () {
-            var texto = "";
-            var qtd = $("#ch").val();
-            qtd = +qtd;
-            for (var i = 0; i < qtd; i++) {
-              if ($('#ag' + i).val()) {
-                if (i !== qtd) {
-                  if (i === 0) {
-                    texto += $('#ag' + i).val();
-                  } else {
-                    texto += pontoevirgula + $('#ag' + i).val();
-                  }
+      document.getElementById('lista-hospede').addEventListener('click', function () {
+        document.getElementById('box-hospede').classList.remove('esconde');
+      });
+
+      var chInput = document.getElementById('ch');
+      chInput.addEventListener('input', function () {
+        var val = chInput.value;
+        var output;
+        if (val < 1) {
+          document.getElementById('ag').classList.remove('ativa');
+          document.getElementById('ag').classList.add('esconde');
+        }
+        var outputContainer = document.getElementById('output');
+        outputContainer.innerHTML = "";
+        var idade = 1;
+        for (var i = 0; i < val; i++) {
+          output = '<div class="clearfix"><span><?php echo "$idade"; ?> ' + idade + ':</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '"/></div>';
+          idade++;
+          outputContainer.insertAdjacentHTML('beforeend', output);
+        }
+
+        var salvarIdadeButton = document.querySelector(".button-ag");
+        var pontoevirgula = ";";
+        salvarIdadeButton.addEventListener('click', function () {
+          var texto = "";
+          var qtd = parseInt(document.getElementById('ch').value);
+          for (var i = 0; i < qtd; i++) {
+            var agElement = document.getElementById('ag' + i);
+            if (agElement.value) {
+              if (i !== qtd) {
+                if (i === 0) {
+                  texto += agElement.value;
+                } else {
+                  texto += pontoevirgula + agElement.value;
                 }
               }
             }
-            $('#ag').val(texto);
-            if ($("#ad").val() > 1) {
-              document.getElementById('plural-adulto').className -= ' esconde';
-            } else {
-              document.getElementById('plural-adulto').className += ' esconde';
-            }
-            $('#adultos-numero').empty();
-            $('#adultos-numero').append($("#ad").val());
-            //Crianças
-            if ($("#ch").val() === 0) {
-              document.getElementById('plural-crianca').className += ' esconde';
-            } else if ($("#ch").val() == 1) {
-              document.getElementById('lista-crianca').className -= ' esconde';
-              document.getElementById('plural-crianca').className += ' esconde';
-            } else {
-              document.getElementById('plural-crianca').className -= ' esconde';
-              document.getElementById('lista-crianca').className -= ' esconde';
-            }
-            $('#crianca-numero').empty();
-            $('#crianca-numero').append($("#ch").val());
-            document.getElementById('box-hospede').className += ' esconde';
-          });
-        }, 1);
+          }
+          document.getElementById('ag').value = texto;
+
+          if (parseInt(document.getElementById('ad').value) > 1) {
+            document.getElementById('plural-adulto').classList.remove('esconde');
+          } else {
+            document.getElementById('plural-adulto').classList.add('esconde');
+          }
+
+          document.getElementById('adultos-numero').innerHTML = document.getElementById('ad').value;
+
+          if (parseInt(document.getElementById('ch').value) === 0) {
+            document.getElementById('plural-crianca').classList.add('esconde');
+          } else if (parseInt(document.getElementById('ch').value) == 1) {
+            document.getElementById('lista-crianca').classList.remove('esconde');
+            document.getElementById('plural-crianca').classList.add('esconde');
+          } else {
+            document.getElementById('plural-crianca').classList.remove('esconde');
+            document.getElementById('lista-crianca').classList.remove('esconde');
+          }
+
+          document.getElementById('crianca-numero').innerHTML = document.getElementById('ch').value;
+          document.getElementById('box-hospede').classList.add('esconde');
+        });
       });
     },
 
     showAlert: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
-          $('#aviso-reserva').addClass('ativa');
-        }, 5000);
-        $("#aviso-reserva").click(function () {
-          document.getElementById('aviso-reserva').className -= ' ativa';
-        });
+      setTimeout(function () {
+        document.getElementById('aviso-reserva').classList.add('ativa');
+      }, 5000);
+
+      document.getElementById('aviso-reserva').addEventListener('click', function () {
+        document.getElementById('aviso-reserva').classList.remove('ativa');
       });
     }
-  }
+  };
 
-  jQuery(document).ready(function ($) {
-    setTimeout(function () {
-      bookingEngine.init();
-    }, 500);
+  document.addEventListener('DOMContentLoaded', function () {
+    bookingEngine.init();
   });
-
 </script>

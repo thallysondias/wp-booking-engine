@@ -99,11 +99,12 @@
         $versionBe = get_option('omnibees_versao');
         $customUrl = get_option('omnibees_url');
 
-        if ($customUrl !== '') {
+        if ($customUrl !== '' && $customUrl !== false) {
           $actionBe = $customUrl;
         } else {
           $actionBe = "https://book.omnibees.com/hotelresults";
         }
+
         ?>
 
         <form action="<?php echo $actionBe ?>" method="GET" target="_blank" class="motor-reserva-v1" id="form-booking">
@@ -156,7 +157,7 @@
                 <img class="input-image" src="<?php echo plugin_dir_url(__FILE__) . 'img/guest-outline.svg' ?>">
               </label>
               <div class="select-wrapper-omnibees">
-                <select name="ad" class="icon-input">
+                <select id="ad" name="ad" class="icon-input">
                   <option value="1">1
                     <?php echo "$adulto"; ?>
                   </option>
@@ -261,142 +262,111 @@
     <?php } ?>
   </div>
 </div>
-
 <script>
-  console.log("Init Omnibees Booking Engine 4.0");
+  console.log("Init Omnibees Booking Engine 5.0");
+
   var bookingEngine = {
     init: function () {
-      bookingEngine.selectedDate();
-      bookingEngine.openCanvas();
-      bookingEngine.childAge();
+      this.selectedDate();
+      this.openCanvas();
+      this.childAge();
     },
     selectedDate: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
-          Date.prototype.addDays = function (days) {
-            var dat = new Date(this.valueOf());
-            dat.setDate(dat.getDate() + days);
-            return dat;
+      Date.prototype.addDays = function (days) {
+        var dat = new Date(this.valueOf());
+        dat.setDate(dat.getDate() + days);
+        return dat;
+      };
+
+      var dat = new Date();
+      var flatpickrElements = document.querySelectorAll(".flatpicker-omnibees-be");
+
+      flatpickrElements.forEach(function (element) {
+        flatpickr(element, {
+          mode: "range",
+          inline: true,
+          minDate: "today",
+          dateFormat: "d/m/Y",
+          locale: "<?php echo $local; ?>",
+          defaultDate: ["today", dat.addDays(2)],
+          onChange: function (selectedDates) {
+            var _this = this;
+            var dateArr = selectedDates.map(function (date) {
+              return _this.formatDate(date, 'dmY');
+            });
+            document.getElementById('checkin').value = dateArr[0];
+            document.getElementById('checkout').value = dateArr[1];
           }
-          var dat = new Date();
-          $(".flatpicker-omnibees-be").flatpickr({
-            mode: "range",
-            inline: true,
-            minDate: "today",
-            dateFormat: "d/m/Y",
-            locale: "<?php echo $local; ?>",
-
-            defaultDate: ["today", dat.addDays(2)],
-
-            onChange: function (selectedDates) {
-              var _this = this;
-              var dateArr = selectedDates.map(function (date) {
-                return _this.formatDate(date, 'dmY');
-              });
-              $('#checkin').val(dateArr[0]);
-              $('#checkout').val(dateArr[1]);
-            }
-
-          });
-        }, 1);
+        });
       });
     },
     childAge: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
+      var promolateral = document.querySelector('.promolateral');
+      var computedStyle = window.getComputedStyle(promolateral);
+      rgb = computedStyle.backgroundColor;
 
-          var rgb = $('.promolateral').css('backgroundColor');
-          var colors = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      var colors = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 
-          var r = colors[1];
-          var g = colors[2];
-          var b = colors[3];
+      var r = colors[1];
+      var g = colors[2];
+      var b = colors[3];
+      var o = Math.round(((parseInt(r) * 299) + (parseInt(g) * 587) + (parseInt(b) * 114)) / 1000);
 
-          var o = Math.round(((parseInt(r) * 299) + (parseInt(g) * 587) + (parseInt(b) * 114)) / 1000);
+      if (o > 125) {
+        document.getElementById('omnibees-off-canvas').classList.add('constrast-color');
+      }
 
-          if (o > 125) {
-            document.getElementById('omnibees-off-canvas').className += ' constrast-color';
-          }
+      var chInput = document.getElementById('ch');
+      chInput.addEventListener('input', function () {
+        var val = chInput.value;
+        var output;
+        if (val < 1) {
+          document.getElementById('ag').classList.remove('ativa');
+          document.getElementById('ag').classList.add('esconde');
+        }
+        var outputContainer = document.getElementById('output');
+        outputContainer.innerHTML = "";
+        var idade = 1;
+        for (var i = 0; i < val; i++) {
+          output = '<div class="child-items"><span><?php echo "$idade"; ?> <?php echo "$da"; ?> ' + idade + 'ª <?php echo "$crianca"; ?>:</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '" /></div>';
+          idade++;
+          outputContainer.insertAdjacentHTML('beforeend', output);
+        }
+      });
 
+      var formBooking = document.getElementById('form-booking');
+      formBooking.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var ages = "";
+        var qtd = parseInt(document.getElementById('ch').value);
 
-          $('#ch').on('change keyup blur', function () {
-            var val = $(this).val();
-            var output;
-            if (val < 1) {
-              document.getElementById('ag').className -= ' ativa';
-              document.getElementById('ag').className += ' esconde';
-            }
-            $('#output').empty();
-            var idade = 1;
-            for (var i = 0, length = val; i < length; i++) {
-              output = '<div class="child-items"><span><?php echo "$idade"; ?> <?php echo "$da"; ?> ' + idade + 'ª <?php echo "$crianca"; ?>:</span> <input type="number" value="1" min="1" class="idade" id="ag' + i + '" /></div>';
-              idade++;
-              $('#output').append(output);
-            }
-          });
-
-          var pontoevirgula = ";";
-          $("#form-booking").submit(function () {
-
-            var texto = "";
-            var qtd = $("#ch").val();
-            qtd = +qtd;
-            for (var i = 0; i < qtd; i++) {
-              if ($('#ag' + i).val()) {
-                if (i !== qtd) {
-                  if (i === 0) {
-                    texto += $('#ag' + i).val();
-                  } else {
-                    texto += pontoevirgula + $('#ag' + i).val();
-                  }
-                }
+        for (var i = 0; i < qtd; i++) {
+          var agElement = document.getElementById('ag' + i);
+          if (agElement.value) {
+            if (i !== qtd) {
+              if (i === 0) {
+                ages += agElement.value;
+              } else {
+                ages += ';' + agElement.value;
               }
             }
-            $('#ag').val(texto);
-            if ($("#ad").val() > 1) {
-              document.getElementById('plural-adulto').className -= ' esconde';
-            } else {
-              document.getElementById('plural-adulto').className += ' esconde';
-            }
-            $('#adultos-numero').empty();
-            $('#adultos-numero').append($("#ad").val());
-            //Crianças
-            if ($("#ch").val() === 0) {
-              document.getElementById('plural-crianca').className += ' esconde';
-            } else if ($("#ch").val() == 1) {
-              document.getElementById('lista-crianca').className -= ' esconde';
-              document.getElementById('plural-crianca').className += ' esconde';
-            } else {
-              document.getElementById('plural-crianca').className -= ' esconde';
-              document.getElementById('lista-crianca').className -= ' esconde';
-            }
-            $('#crianca-numero').empty();
-            $('#crianca-numero').append($("#ch").val());
-            document.getElementById('box-hospede').className += ' esconde';
-          });
-
-        }, 1);
+          }
+        }
+        var ageChild = document.getElementById('ag');
+        ageChild.value = ages;
+        formBooking.submit();
       });
     },
-
     openCanvas: function () {
-      jQuery(document).ready(function ($) {
-        setTimeout(function () {
-          $("#button-reserva-flutuante").click(function () {
-            $("#be-off-canvas").css("width", "340");
-          });
-          $("#closebtn").click(function () {
-            $("#be-off-canvas").css("width", "0");
-          });
-        }, 1);
+      document.getElementById('button-reserva-flutuante').addEventListener('click', function () {
+        document.getElementById('be-off-canvas').style.width = '340px';
+      });
+      document.getElementById('closebtn').addEventListener('click', function () {
+        document.getElementById('be-off-canvas').style.width = '0';
       });
     }
   };
-
-  jQuery(document).ready(function ($) {
-    setTimeout(function () {
-      bookingEngine.init();
-    }, 500);
+  document.addEventListener('DOMContentLoaded', function () {
+    bookingEngine.init();
   });
-
 </script>
