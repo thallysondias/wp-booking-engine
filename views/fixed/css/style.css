@@ -453,7 +453,7 @@ body {
 .motor-reserva .ativa {
   opacity: 1 !important;
   background: blue;
-  display: block !important;
+  /* display: block !important; */
   bottom: 80px !important;
   transition: all ease-in 3s !important;
 }
