@@ -17,6 +17,7 @@ function be_opt()
   $versao = $_POST['versao'];
   $affiliate = $_POST['omnibees_affiliate'];  
   $custom_url = $_POST['omnibees_url'];  
+  $balao = $_POST['omnibees_balao'];  
 
   global $chk;
 
@@ -49,6 +50,9 @@ function be_opt()
   }
   if (get_option('omnibees_url') != trim($custom_url)) {
     $chk = update_option('omnibees_url', trim($custom_url));
+  }
+  if (get_option('omnibees_balao') != trim($balao)) {
+    $chk = update_option('omnibees_balao', trim($balao));
   }
 }
 ?>
@@ -446,6 +450,24 @@ function be_opt()
           <i class="traducao-passo"><br>Utilize apenas se souber o seu dominio personalizado, caso não saiba deixe em branco.</i>
         </div>
        
+      </div>
+
+      <div class="passo-plugin">
+        <table>
+          <tr>
+            <td style="width: 30px;"><span class="numero-plugin">8</span></td>
+            <td>
+              <b>Defina o comportamento do balão informativo</b><br>
+              <i class="traducao-passo">Define the behavior of the information balloon</i>
+            </td>
+          </tr>
+        </table>
+        <div class="input-plugin">
+          <select name="balao">
+            <option value="block" <?php if(get_option('omnibees_balao') === "block") :?> selected="selected" <?php endif;?>>Mostrar balão</option>
+            <option value="none" <?php if(get_option('omnibees_balao') === "none") :?> selected="selected" <?php endif;?>>Ocultar Balão</option>
+          </select>
+        </div>
       </div>
 
       <div style="border-bottom:1px solid #eee;">
