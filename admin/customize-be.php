@@ -17,7 +17,7 @@ function be_opt()
   $versao = $_POST['versao'];
   $affiliate = $_POST['omnibees_affiliate'];  
   $custom_url = $_POST['omnibees_url'];  
-  $balao = $_POST['omnibees_balao'];  
+  $balao = $_POST['balao'];  
 
   global $chk;
 

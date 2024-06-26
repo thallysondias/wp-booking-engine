@@ -17,9 +17,27 @@
   }
 
   .motor-reserva .ativa {
-    display: <?php echo get_option('omnibees_balao');?> !important;
+    display: none !important;
   }
 
+  <?php
+
+  $balao_style = get_option('omnibees_balao');
+
+  if ($balao_style == "block") { 
+  ?>
+      .motor-reserva .ativa {
+        display: block !important;
+      }
+  <?php
+  } else {
+  ?>
+      .motor-reserva .ativa {
+        display: none !important;
+      }
+  <?php
+  }
+  ?>
 
   .booknow button {
     background:
