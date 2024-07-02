@@ -309,6 +309,9 @@
           document.getElementById('box-hospede').classList.add('esconde');
         });
       });
+      document.getElementById('salvar-idade').addEventListener('click', function () {
+        document.getElementById('box-hospede').classList.add('esconde');
+      });
     },
 
     showAlert: function () {
