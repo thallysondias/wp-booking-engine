@@ -111,7 +111,7 @@
 
       if (count($selectedHotel) > 1) {
         ?>
-        <select name="q" class="hotel-selection">
+        <select name="q" class="hotel-selection" required>
           <?php
           foreach ($selectedHotel as $id => $name) { ?>
             <option value="<?php echo $id; ?>">
