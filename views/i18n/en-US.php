@@ -1,4 +1,4 @@
-<?
+<?php
 $adulto = 'Adult';
 $crianca = 'Child';
 $idade = 'Age';

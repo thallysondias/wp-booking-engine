@@ -6,7 +6,7 @@ Requires at least: 6.0
 Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 5.1.3
+Version: 5.2.0
  
 
 == Description ==
@@ -62,6 +62,9 @@ BE Footer -> http://widgets.omnibees.com/wordpress/print-rodape.JPG
 Control Panel -> http://widgets.omnibees.com/wordpress/print-painel.JPG
 
 == Changelog ==
+
+= Version: 5.2.0 =
+* Fix tag <?php ?> on i18n en-ES and en-US
 
 = Version: 5.1.3 =
 * Fix select required on footer
